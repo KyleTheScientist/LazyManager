@@ -1,7 +1,7 @@
 import json
 import asyncio
 from asyncio.subprocess import PIPE
-from messaging import Agent
+from connection_manager import Agent
 
 
 class EGM:

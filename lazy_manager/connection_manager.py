@@ -62,7 +62,7 @@ class App:
         return f"App({self.ip})"
 
 
-class Manager:
+class ConnectionManager:
 
 
     def __init__(self, agent_port=8765, app_port=8766, agent_ips=None):
@@ -71,7 +71,7 @@ class Manager:
         self.agent_ips = agent_ips if agent_ips else []
         self.agents: dict[str, Agent] = {}
         self.apps: dict[str, App] = {}
-        self.logger = get_logger("Manager")
+        self.logger = get_logger("ConnectionManager")
         self.setup_listener()
 
     def setup_listener(self):
@@ -106,6 +106,7 @@ class Manager:
                     try:
                         self.logger.info(f"Reconnecting to app {app.ip}...")
                         ws = await websockets.connect(f"ws://{app.ip}:{self.app_port}")
+                        await self.on_app_connect(app)
                         app.connection = ws
                     except Exception as e:
                         self.logger.warning(f"Failed to reconnect to app {app.ip}: {e}")
@@ -115,9 +116,8 @@ class Manager:
         try:
             ws = await websockets.connect(f"ws://{ip}:{self.app_port}")
             self.apps[ip] = App(ip, ws)
-            self.loop.create_task(self.process_app_messages(self.apps[ip]))
             await self.on_app_connect(self.apps[ip])
-            self.logger.info(f"Connected to app {ip}")
+            self.loop.create_task(self.process_app_messages(self.apps[ip]))
         except Exception as e:
             self.logger.warning(f"Failed to connect to app at {ip}: {e}")
 
@@ -127,14 +127,18 @@ class Manager:
                 agent = self.agents.get(ip)
                 if agent and agent.connection.state == websockets.protocol.State.OPEN:
                     continue  # Already connected
-                try:
-                    ws = await websockets.connect(f"ws://{ip}:{self.agent_port}")
-                    self.agents[ip] = Agent(ip, ws)
-                    self.logger.info(f"Connected to EGM {ip}")
-                    self.loop.create_task(self.process_agent_messages(self.agents[ip]))
-                except Exception as e:
-                    self.logger.warning(f"Failed to connect to {ip}: {e}")
+                asyncio.create_task(self._connect_to_agent(ip))
             await asyncio.sleep(5)
+
+    async def _connect_to_agent(self, ip: str):
+        try:
+            ws = await websockets.connect(f"ws://{ip}:{self.agent_port}")
+            self.agents[ip] = Agent(ip, ws)
+            await self.on_agent_connect(self.agents[ip])
+            self.loop.create_task(self.process_agent_messages(self.agents[ip]))
+        except Exception as e:
+            pass
+            # self.logger.warning(f"Failed to connect to agent at {ip}: {e}")
 
     async def ping(self):
         for agent, ws in self.agents.items():
@@ -153,7 +157,6 @@ class Manager:
             self.logger.info(f"No connection to {ip}")
 
     async def process_agent_messages(self, agent: Agent):
-        await self.on_agent_connect(agent)
         try:
             async for message in agent.connection:
                 await self.handle_agent_message(message, agent)
@@ -161,7 +164,6 @@ class Manager:
             self.logger.info("Connection closed")
 
     async def process_app_messages(self, app: App):
-        await self.on_app_connect(app)
         try:
             async for message in app.connection:
                 await self.handle_app_message(message, app)

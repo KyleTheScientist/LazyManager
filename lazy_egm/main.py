@@ -5,10 +5,9 @@ import subprocess
 import pyautogui
 from lazy_socket.server import LazyServer
 from pathlib import Path
-from lazy_socket.client import LazyClient
 
 CONFIG_PATH = Path("lazy_egm.cfg")
-VERSION = "1.0"
+VERSION = "1.0.1"
 
 
 class EGM(LazyServer):
@@ -33,7 +32,15 @@ class EGM(LazyServer):
     def load_config(self):
         if CONFIG_PATH.exists():
             return json.loads(CONFIG_PATH.read_text())
-        return {}
+        else:
+            content = {
+                "site": "lab/warehouse",
+                "bv_type": "JcmUba/MeiCashflow",
+                "type": "vertical/1600"
+            }
+            CONFIG_PATH.touch()
+            CONFIG_PATH.write_text(json.dumps(content, indent=4))
+            return content
 
     def serialize(self):
         result = "&".join([f"{k}={v}" for k, v in self.properties.items()])
@@ -80,7 +87,7 @@ class EGM(LazyServer):
             await client.send(f"egm:result:start_automakro:{result}")
 
         elif command == "stop_egmc":
-            result = "Success" if self._try_kill("EGMController.exe") else "Failure"
+            result = "Success" if self._try_kill("EGMController.exe", force=False) else "Failure"
             await client.send(f"egm:result:stop_egmc:{result}")
 
         elif command == "start_egmc":
@@ -98,19 +105,27 @@ class EGM(LazyServer):
             pyautogui.press("f1")
             await client.send(f"egm:result:f1:Success")
 
+        elif command == "f2":
+            pyautogui.hotkey('alt', 'tab', interval=0.2)
+            await client.send(f"egm:result:alt_tab:Success")
+
         else:
             await client.send(f"egm:result:{command}:Unknown command")
 
-    def _try_kill(self, process_name):
-        result = subprocess.run(f"taskkill /F /IM {process_name}", capture_output=True, shell=True)
+    def _try_kill(self, process_name, force=True):
+        command = f"taskkill {'/F' if force else ''} /IM {process_name}"
+        print(command)
+        result = subprocess.run(command, capture_output=True, shell=True)
         return result.returncode == 0 or result.returncode == 128
 
     def _try_start(self, process_path, cwd=None):
+        print(process_path)
         result = subprocess.Popen(process_path, cwd=cwd, shell=True)
         time.sleep(2)
         return result.poll() is None
 
     def _try_run(self, command, rc=0):
+        print(command)
         result = subprocess.run(command, capture_output=True, shell=True)
         print(result.returncode)
         return result.returncode == rc

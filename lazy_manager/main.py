@@ -2,7 +2,7 @@ import asyncio
 import logging
 import psutil
 from lazy_logging import get_logger
-from messaging import Manager, App, Agent
+from connection_manager import ConnectionManager, App, Agent
 from device_manager import DeviceManager
 
 logger = get_logger("LazyManager")
@@ -13,18 +13,21 @@ logger = get_logger("LazyManager")
 #     return False
 
 AGENT_PORT = 8765
-AGENT_IPS = ["127.0.0.1", "10.0.0.99"]
+AGENT_IPS = [f"10.0.0.{i}" for i in range(2, 28)]
+AGENT_IPS.remove("10.0.0.3")  # Exclude POS terminal
+
 
 APP_PORT = 8767
 
-class LazyManager(Manager):
+class LazyManager(ConnectionManager):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, agent_port=AGENT_PORT, app_port=APP_PORT, agent_ips=AGENT_IPS, **kwargs)
         self.device_manager = DeviceManager()
 
     async def handle_agent_message(self, message: str, agent: Agent):
-        logger.info(f"Received message from agent {agent.ip}: {message}")
+        if 'pong' not in message:
+            logger.info(f"Received message from agent {agent.ip}: {message}")
         sender, command = message.split(":", 1)
         if sender == "app":
             logger.info(f"Forwarding result from device {agent.ip} to app")
@@ -40,14 +43,12 @@ class LazyManager(Manager):
         if command == "list_devices":
             logger.info(f"Listing {len(self.device_manager.devices)} devices for app {app.ip}")
             for egm in self.device_manager.devices.values():
-                print(f"Sending device {egm.id} info to app {app.ip}")
                 await app.send(f"manager:egm:{egm.serialize()}")
             return
 
         split = command.split(":", 1)
         command, target = split[0], split[1]
         device = self.device_manager.devices.get(target, None)
-        print(self.device_manager.devices)
         if not device:
             logger.warning(f"Device {target} not found for command {command}")
             await app.send(f"manager:status:Device {target} not found")
