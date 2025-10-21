@@ -134,6 +134,7 @@ class MakroServer:
         await client.send(f"status:({device}) Ping {'successful' if connected else 'failed'}")
 
     async def send_device(self, device, client):
+        print(f"Sending device {device.ip} to client")
         await device.is_reachable()
         await client.send(f"device:{device.serialize()}")
 

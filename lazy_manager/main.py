@@ -12,10 +12,15 @@ logger = get_logger("LazyManager")
 #         return net_if_stats[adapter_name].isup
 #     return False
 
+AGENT_PORT = 8765
+AGENT_IPS = ["127.0.0.1", "10.0.0.99"]
+
+APP_PORT = 8767
+
 class LazyManager(Manager):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super().__init__(*args, agent_port=AGENT_PORT, app_port=APP_PORT, agent_ips=AGENT_IPS, **kwargs)
         self.device_manager = DeviceManager()
 
     async def handle_agent_message(self, message: str, agent: Agent):
@@ -33,7 +38,7 @@ class LazyManager(Manager):
     async def handle_app_message(self, message: str, app: App):
         sender, command = message.split(":", 1)
         if command == "list_devices":
-            logger.info(f"Listing devices for app {app.ip}")
+            logger.info(f"Listing {len(self.device_manager.devices)} devices for app {app.ip}")
             for egm in self.device_manager.devices.values():
                 print(f"Sending device {egm.id} info to app {app.ip}")
                 await app.send(f"manager:egm:{egm.serialize()}")

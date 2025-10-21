@@ -20,6 +20,8 @@ class AppListener(ServiceListener):
             if ip not in self.ips:
                 self.ips.append(ip)
                 self.on_service_found(ip)
+            else:
+                self.logger.debug(f"Service {name} at {ip} already known")
 
     def remove_service(self, zc, type_, name):
         self.logger.info(f"[AppListener] Service removed: {name}")
@@ -62,12 +64,11 @@ class App:
 
 class Manager:
 
-    AGENT_PORT = 8765
-    AGENT_IPS = ["127.0.0.1", "127.0.0.2"]
 
-    APP_PORT = 8767
-
-    def __init__(self):
+    def __init__(self, agent_port=8765, app_port=8766, agent_ips=None):
+        self.agent_port = agent_port
+        self.app_port = app_port
+        self.agent_ips = agent_ips if agent_ips else []
         self.agents: dict[str, Agent] = {}
         self.apps: dict[str, App] = {}
         self.logger = get_logger("Manager")
@@ -104,7 +105,7 @@ class Manager:
                 if app.connection.state != websockets.protocol.State.OPEN:
                     try:
                         self.logger.info(f"Reconnecting to app {app.ip}...")
-                        ws = await websockets.connect(f"ws://{app.ip}:{self.APP_PORT}")
+                        ws = await websockets.connect(f"ws://{app.ip}:{self.app_port}")
                         app.connection = ws
                     except Exception as e:
                         self.logger.warning(f"Failed to reconnect to app {app.ip}: {e}")
@@ -112,8 +113,8 @@ class Manager:
 
     async def _connect_to_app(self, ip: str):
         try:
-            ws = await websockets.connect(f"ws://{ip}:{self.APP_PORT}")
-            self.apps[ip] = Agent(ip, ws)
+            ws = await websockets.connect(f"ws://{ip}:{self.app_port}")
+            self.apps[ip] = App(ip, ws)
             self.loop.create_task(self.process_app_messages(self.apps[ip]))
             await self.on_app_connect(self.apps[ip])
             self.logger.info(f"Connected to app {ip}")
@@ -122,12 +123,12 @@ class Manager:
 
     async def try_connect_agents(self):
         while True:
-            for ip in self.AGENT_IPS:
+            for ip in self.agent_ips:
                 agent = self.agents.get(ip)
                 if agent and agent.connection.state == websockets.protocol.State.OPEN:
                     continue  # Already connected
                 try:
-                    ws = await websockets.connect(f"ws://{ip}:{self.AGENT_PORT}")
+                    ws = await websockets.connect(f"ws://{ip}:{self.agent_port}")
                     self.agents[ip] = Agent(ip, ws)
                     self.logger.info(f"Connected to EGM {ip}")
                     self.loop.create_task(self.process_agent_messages(self.agents[ip]))

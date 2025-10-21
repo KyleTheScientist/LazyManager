@@ -53,6 +53,7 @@ class DeviceManager:
 
     async def ping_devices(self):
         while True:
+            print('\n'.join([d.serialize() for d in self.devices.values()]))
             device_ips = list(self.devices.keys())
             for ip in device_ips:
                 device = self.devices[ip]
@@ -66,7 +67,9 @@ class DeviceManager:
                     await device.agent.send(f"manager:ping")
                 except ConnectionClosed:
                     logger.warning(f"Connection to device {device.ip} closed.")
+                    device.status = "Offline"
                     await device.agent.close()
                 except Exception as e:
+                    device.status = "Offline"
                     logger.error(f"Error while pinging EGM {device.ip}: {e}")
-            await asyncio.sleep(30)
+            await asyncio.sleep(5)
