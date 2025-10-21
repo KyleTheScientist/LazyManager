@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<EGMConfiguration Version="1.0">
+  <!-- Directories -->
+  <Param name="RootDir" value ="D:/MGP"/>
+  <Param name="StorageFolder" value="E:/Storage"/>
+
+  <!-- Servers -->
+  <Param name="UseLocationServer" value="true" />
+  <Param name="UseNeoServer" value="false" />
+  <Param name="LocationServerTimeout" value="6.0" />
+  <Param name="UseServerDetermination" value="true" />
+  <Param name="SpinTimeout" value="10.0" />
+  <Param name="UseEncryptionForMSMQ" value="false" />
+  <Param name="DerbyDashCommunityGame" value="false" />
+  <Param name="ContributionPort" value="0" />
+
+  <!-- Screen -->
+  <Param name="ScreenOrientation" value="Landscape" /> <!-- Landscape, Portrait -->
+  <Param name="ShowCursor" value="false" />
+
+  <!-- Machine Identity -->
+  <Param name="CasinoTerminalNo" value="{terminal_number}" /> <!-- Not valid by default -->
+
+  <!-- Accounting -->
+  <Param name="ShowDollarsForCredits" value="true" />
+  <Param name="SiteEnabledDenoms" value="1,2,5,10,25"/>
+
+  <!-- Developer/test features -->
+  <Param name="AllowDebugFeatures" value="false" />
+
+  <!-- Audio -->
+  <Param name="Volume" value="0" /> <!-- 0-100 -->
+
+  <!-- Miscellaneous -->
+  <Param name="JumpStraightToGame" value="false" />
+  <Param name="LaunchToMenu" value="true" />
+  <Param name="DateFormat" value="MM/DD/YYYY" />
+  <Param name="DisplayFps" value="false" />
+  <Param name="ShowMode" value="false" />
+  <Param name="DoVerificationTests" value="true" />
+  <Param name="AllowAuditMenu" value="true" />
+  <Param name="MonitorMainDoor" value="true" />
+  
+  <!-- Idle Mode -->
+  <Param name="IdleModeEnabled" value="true" />
+  <Param name="TimeInactiveBeforeIdleSeconds" value="300" />
+  <Param name="TimeSpentInGameSeconds" value="60" />
+  <Param name="TimeSpentInMenuSeconds" value="60" />
+
+  <!-- Game Rules -->
+  <Param name="AnnounceWinners" value="false" />
+  <Param name="DisableAnimation" value="false" />
+  <Param name="TwoPlayerMode" value="false" />
+
+  <!-- Ticketing -->
+  <Param name="TicketExpirationDays" value="2" />
+  <Param name="VoidNotice" value="VOID AFTER 2 DAYS" />
+  <Param name="OffsetBarcodeForReprints" value="true" />
+  <Param name="DisableDrop" value="false" />
+  <Param name="DisableDropButSendDropReportToServer" value="false" />
+
+  <!-- History Sizes -->
+  <Param name="GameHistorySize" value="50"/>
+  <Param name="CashoutHistorySize" value="35"/>
+  <Param name="BillHistorySize" value="35"/>
+  <Param name="MysteryHistorySize" value="35"/>
+  <Param name="TicketInHistorySize" value="35"/>
+  <Param name="EventHistorySize" value="120"/>
+  
+  <!-- SAS -->
+  <Param name="UseSasEngineLogging" value="true" />
+  <Param name="SasAssetNumber" value="0" />
+  <Param name="SasAddress" value="0" />
+  <Param name="SasEgmSerialNumber" value="0" />
+  <Param name="SasVariant" value="Cash" />  <!-- Cash, AxesSas -->
+  <Param name="SasValidationStyle" value="SecureEnhanced" /> <!-- Standard, System, SecureEnhanced, None -->
+  <Param name="SasBufferStorageFormat" value="Xml" /> <!-- Xml, Binary -->
+  <Param name="IgnoreSasShutdownStartupCommand" value="false" />
+  <Param name="SasEngineLoggingMaxFileSizeMb" value="10" />
+  <Param name="SasEngineLoggingMaxNumFiles" value="10" />
+  <Param name="SasEngineDoNotPrintHandpayTickets" value="false" />
+
+  <!-- Game Win Thresholds -->
+  <Param name="FlashOnWinThreshold" value="5"/>
+  <Param name="RingOnWinThreshold" value="10"/>
+  <Param name="WinAnimationThreshold_1" value="10"/>
+  <Param name="WinAnimationThreshold_2" value="20"/>
+  <Param name="WinAnimationThreshold_3" value="40"/>
+  
+  <!-- Promotional Screen  -->
+  <Param name="LaunchPromotionalScreenIfAvailable" value="true"/>
+  <Param name="PromotionalScreenX" value="2048"/> <!-- 1024 * 2 -->
+  <Param name="PromotionalScreenY" value="0"/>
+
+  <!-- Game Features -->
+  <Param name="CreditSymbols" value="true"/>
+  <Param name="AutoRevealCreditSymbols" value="true"/>
+  <Param name="FeatureOut1ActiveDurationSeconds" value="5"/>
+  <Param name="FeatureOut2ActiveDurationSeconds" value="5"/>
+  <Param name="OfferMaxLinesOnly" value="false" />
+  
+  <!-- Bonus Blitz-->
+  <Param name="BonusBlitz" value ="false"/>
+
+  
+</EGMConfiguration>
