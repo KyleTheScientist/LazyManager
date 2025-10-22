@@ -1,0 +1,193 @@
+#:kivy 2.3.1
+
+<PropertyLabel>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: self.minimum_height
+    spacing: 10
+    Label:
+        size_hint_y: None
+        height: self.texture_size[1]
+        id: title
+        text: root.title
+        font_size: 24
+    Label:
+        size_hint_y: None
+        height: self.texture_size[1]
+        text_size: (self.width, None)
+        halign: "center"
+        id: value
+        text: root.value
+        color: root.color
+        font_size: 18
+
+<TitleBar>:
+    size_hint_y: None
+    height: 100
+    orientation: 'horizontal'
+    
+    BorderedButton:
+        text: "<"
+        size_hint: None, None  # Disable size hinting for absolute sizing
+        size: 100, 100         # Set a specific size
+        on_press:
+            app.screen_manager.transition.direction = 'right'
+            app.screen_manager.current = 'devices'
+    
+    Label:
+        text: root.title
+        size_hint_x: None
+        width: max(self.parent.width - 200, 0)
+        height: 100
+        font_size: 48
+
+<ActionButtonGroup>:
+    # Action buttons
+    spacing: 20
+
+    HeightBox:
+        padding: 0
+        orientation: 'horizontal'
+        BorderedButton:
+            text: '■ Automakro'
+            color: app.NEGATIVE
+            on_press: root.executor.stop_automakro()
+        BorderedButton:
+            text: '▶ Automakro'
+            color: app.POSITIVE
+            on_press: root.executor.start_automakro()
+
+    HeightBox:
+        padding: 0
+        orientation: 'horizontal'
+        BorderedButton:
+            text: '■ EGM Controller'
+            color: app.NEGATIVE
+            on_press: root.executor.stop_egm_controller()
+
+        BorderedButton:
+            text: '▶ EGM Controller'
+            color: app.POSITIVE
+            on_press: root.executor.start_egm_controller()
+
+    HeightBox:
+        padding: 0
+        orientation: 'horizontal'
+        BorderedButton:
+            text: '▶ Explorer'
+            color: app.POSITIVE
+            on_press: root.executor.start_explorer()
+
+        BorderedButton:
+            text: '▶ Task Manager'
+            color: app.POSITIVE
+            on_press: root.executor.start_task_manager()
+
+    HeightBox:
+        padding: 0
+        orientation: 'horizontal'
+        BorderedButton:
+            text: 'F1'
+            color: app.NEUTRAL
+            on_press: root.executor.f1()
+
+        BorderedButton:
+            text: 'Alt+Tab'
+            color: app.NEUTRAL
+            on_press: root.executor.alt_tab()
+
+    BorderedButton:
+        text: 'Clear RAM'
+        on_press: root.executor.clear_ram()
+        color: app.NEGATIVE
+
+    HeightBox:
+        padding: 0
+        orientation: 'horizontal'
+        BorderedButton:
+            text: 'A'
+            color: app.NEUTRAL
+            on_press: root.executor.a()
+
+        BorderedButton:
+            text: 'B'
+            color: app.NEUTRAL
+            on_press: root.executor.b()
+
+        BorderedButton:
+            text: 'C'
+            color: app.NEUTRAL
+            on_press: root.executor.c()
+
+        BorderedButton:
+            text: 'D'
+            color: app.NEUTRAL
+            on_press: root.executor.d()
+
+<DeviceProperties>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 25
+
+        TitleBar:
+            title: root.device.label
+        
+        OutlinedSection: # Container for all properties and buttons
+            size_hint: 1, 1
+            orientation: 'vertical'
+
+            ScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+                
+                HeightBox: # Container for all properties and buttons
+                    OutlinedSection: # Device properties box
+                        padding: 0
+                        HeightBox: # Row 2
+                            orientation: 'horizontal'
+                            PropertyLabel:
+                                title: f'Status'
+                                value: root.device.status
+                                color: app.POSITIVE if root.device.status == "Online" else app.NEGATIVE
+                        HeightBox: # Row 1
+                            orientation: 'horizontal'
+                            PropertyLabel:
+                                title: f'LazyEGM'
+                                value: root.device.lazy_egm_version
+                                color: app.NEUTRAL
+                            PropertyLabel:
+                                title: f'IP'
+                                value: root.device.ip
+                                color: app.NEUTRAL
+                            PropertyLabel:
+                                title: f'Site'
+                                value: root.device.site
+                                color: app.NEUTRAL
+                            PropertyLabel:
+                                title: f'BV Type'
+                                value: root.device.bv_type
+                                color: app.NEUTRAL
+
+                    ActionButtonGroup:
+                        executor: root
+
+<SiteProperties>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        TitleBar:
+            title: root.site.name
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            
+            OutlinedSection: # Container for all properties and buttons
+                OutlinedSection: # Site properties box
+                    PropertyLabel:
+                        title: f'Devices (' + root.site.count + ')'
+                        value: root.site.device_list
+                
+                ActionButtonGroup:
+                    executor: root

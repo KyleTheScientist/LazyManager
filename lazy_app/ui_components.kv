@@ -1,0 +1,67 @@
+#:kivy 2.3.1
+<MainBox>:
+    padding: 0
+    spacing: 0
+    canvas.before:
+        Color:
+            rgba: app.BACKGROUND
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<BorderedButton>:
+    background_normal: ''
+    background_down: ''
+    background_color: (0, 0, 0, 0)
+    size_hint_y: None
+    font_size: 20
+    canvas.before:
+        Color:
+            rgba: (0, 0, 0, .4)
+        RoundedRectangle:
+            radius: [10,]
+            size: self.size
+            pos: (self.x + 7, self.y - 10)
+        
+        Color:
+            rgba: app.BUTTON_DOWN if self.state == "down" else app.BUTTON_UP
+        RoundedRectangle:
+            radius: [10,]
+            size: self.size
+            pos: (self.x + 2, self.y - 4) if self.state == "down" else self.pos
+        
+        # Color:
+        #     rgba: app.WHITE
+        # Line:
+        #     rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+        #     width: 1
+        #     cap: 'round'
+        #     joint: 'round'
+
+<TextButton>:
+    background_normal: ''
+    background_down: ''
+    background_color: (0, 0, 0, 0)
+    size_hint_y: None
+    font_size: 24
+    color: app.WHITE
+
+<HeightBox>:
+    padding: 10
+    spacing: 10
+    orientation: 'vertical'
+    size_hint_y: None
+    height: self.minimum_height
+
+<OutlinedSection>:
+    padding: 20
+    spacing: 20
+    
+    canvas.before:
+        Color:
+            rgba: app.WHITE
+        Line:
+            rounded_rectangle:  (self.x + 2, self.y + 2, self.width - 4, self.height - 4, 10)
+            width: 1
+            cap: 'round'
+            joint: 'round'

@@ -13,11 +13,14 @@ logger = get_logger("LazyManager")
 #     return False
 
 AGENT_PORT = 8765
-AGENT_IPS = [f"10.0.0.{i}" for i in range(2, 28)]
-AGENT_IPS.remove("10.0.0.3")  # Exclude POS terminal
-
-
 APP_PORT = 8767
+
+# AGENT_IPS = [f"10.0.0.{i}" for i in range(2, 28)]
+# AGENT_IPS.remove("10.0.0.3")  # Exclude POS terminal
+
+AGENT_IPS = ["127.0.0.1"] # For testing purposes
+
+
 
 class LazyManager(ConnectionManager):
 
@@ -28,12 +31,17 @@ class LazyManager(ConnectionManager):
     async def handle_agent_message(self, message: str, agent: Agent):
         if 'pong' not in message:
             logger.info(f"Received message from agent {agent.ip}: {message}")
+        
         sender, command = message.split(":", 1)
-        if sender == "app":
-            logger.info(f"Forwarding result from device {agent.ip} to app")
-            command, app_ip, message = message.split(":", 2)
-            app = self.apps[app_ip]
-            await app.send(f"egm:{agent.ip}:{message}")
+        if command.startswith("result:"):
+            print(message)
+            _, app_ip, command, result = command.split(":", 3)
+            app = self.apps.get(app_ip, None)
+            if not app:
+                logger.warning(f"App '{app_ip}' not found for forwarding result of device {agent.ip}")
+                return
+            logger.info(f"Forwarding result from device {agent.ip} to app {app.ip}")
+            await app.send(f"egm:result:{agent.ip}:{command}:{result}")
         
         if sender == "egm":
             await self.device_manager.handle(agent, command)
@@ -54,7 +62,7 @@ class LazyManager(ConnectionManager):
             await app.send(f"manager:status:Device {target} not found")
             return
         
-        await device.agent.send(f"app:{command}")
+        await device.agent.send(f"app:{command}:{app.ip}")
 
     async def on_agent_connect(self, agent: Agent):
         logger.info(f"Agent connected: {agent}")

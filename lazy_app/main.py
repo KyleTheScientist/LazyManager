@@ -1,5 +1,5 @@
 from kivy.config import Config
-
+from kivy.lang import Builder
 Config.set(
     "kivy",
     "default_font",
@@ -14,13 +14,16 @@ Config.set(
 import asyncio
 import threading
 from printmoji import print
+from lazy_socket.server import LazyServer
+
 from kivy.app import App
-from devices import DeviceList, DeviceProperties, SiteProperties
 from kivy.clock import Clock
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.screenmanager import ScreenManager
-from lazy_socket.server import LazyServer
+
+from ui_components import MainBox
+from ui_device_list import DeviceList
+from ui_properties import DeviceProperties, SiteProperties
 
 
 class Manager:
@@ -39,8 +42,20 @@ class Manager:
 
 class MainApp(App):
 
+    BACKGROUND = 0.204, 0.278, 0.341, 1
+    POSITIVE = 0.263, 0.667, 0.545, 1
+    NEGATIVE = 0.976, 0.255, 0.267, 1
+    NEUTRAL = 0.976, 0.78, 0.31, 1
+    BLACK = 0, 0, 0, 1
+    WHITE = 1, 1, 1, 1
+    BUTTON_UP = 0.11, 0.239, 0.349, 1
+    BUTTON_DOWN = 0.051, 0.173, 0.278, 1
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        Builder.load_file("ui_components.kv")
+        Builder.load_file("ui_device_list.kv")
+        Builder.load_file("ui_properties.kv")
         self.server = LazyServer(name="LazyApp", host="0.0.0.0", port=8767, broadcast=True)
         self.server_thread = threading.Thread(target=self.server.start, daemon=True)
         self.server.process_message = self.process_message
@@ -71,7 +86,7 @@ class MainApp(App):
         self.screen_manager.add_widget(self.build_site_properties_screen())
         self.screen_manager.current = "devices"
 
-        layout = BoxLayout(orientation="vertical")
+        layout = MainBox(orientation="vertical")
         layout.add_widget(self.screen_manager)
         layout.add_widget(self.status)
 
@@ -87,7 +102,7 @@ class MainApp(App):
             k, v = prop.split("=")
             _properties[k] = v
         properties = _properties
-        self.device_list.add_device(properties)
+        self.device_list.add_or_update_device(properties)
         print(f"🟩Added/Updated device {properties.get('ip', 'Unknown IP')}")
 
     async def process_message(self, client, message):
@@ -110,12 +125,10 @@ class MainApp(App):
                 print(f"🟨Manager status: {status_message}")
                 self.status.text = f"Manager: {status_message}"
 
-        if sender == "egm" and command[1] == "result":
-            id = command[0]
-            result_command = command[2]
-            result_value = ":".join(command[3:])
-            print(f"🟦Result from EGM {id} for command {result_command}: {result_value}")
-            self.status.text = f"EGM {id} - {result_command}: {result_value}"
+        if sender == "egm" and command[0] == "result":
+            _, __, agent_ip, command, result = message.split(":", 4)
+            print(f"🟨EGM {agent_ip} - {command} result: {result}")
+            self.status.text = f"EGM {agent_ip} - {command}: {result}"
 
 
 if __name__ == "__main__":

@@ -1,0 +1,72 @@
+#:kivy 2.3.1
+<Site>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: self.minimum_height
+    spacing: 0
+    padding: 10
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, .75
+        Line:
+            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+            width: 1
+            cap: 'round'
+            joint: 'round'
+    
+    TextButton: 
+        text: root.name.upper()
+        height: 30
+        size_hint_y: None
+        font_size: 24
+        padding: 0
+        color: (1, 1, 1, 1)
+        on_press: 
+            app.site_properties.site = root
+            app.screen_manager.transition.direction = 'left'
+            app.screen_manager.current = "site_properties"
+
+    BoxLayout:
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+        spacing: 10
+        padding: [10]
+        id: container
+
+<Device>:
+    size_hint_y: None
+    height: 75
+    padding: 10
+    text: root.label
+    color: app.POSITIVE if root.status == "Online" else app.NEGATIVE
+    on_press: 
+        app.device_properties.device = root
+        app.screen_manager.transition.direction = 'left'
+        app.screen_manager.current = "device_properties"
+
+<DeviceList>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 25
+        spacing: 25
+
+        BoxLayout: # Top bar (header + back button)
+            size_hint_y: None
+            height: 50
+            orientation: 'horizontal'
+            Label:
+                text: "Devices"
+                font_size: 48
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+
+            BoxLayout:
+                id: container
+                orientation: 'vertical'
+                spacing: 30
+                padding: 25
+                size_hint_y: None
+                height: self.minimum_height  # This is crucial for vertical scrolling

@@ -5,9 +5,10 @@ import subprocess
 import pyautogui
 from lazy_socket.server import LazyServer
 from pathlib import Path
+from shutil import rmtree
 
 CONFIG_PATH = Path("lazy_egm.cfg")
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 
 
 class EGM(LazyServer):
@@ -56,12 +57,12 @@ class EGM(LazyServer):
                 await client.send(f"egm:result:{split[1]}:{str(e)}")
 
         if message.startswith("app:"):
-            split = message.split(":")
+            app, command, app_ip = message.split(":")
             try:
-                await self.run_app_command(client, split[1])
+                await self.run_app_command(client, command, app_ip)
             except Exception as e:
-                print(f"Error processing app command {split[1]}: {e}")
-                await client.send(f"egm:result:{split[1]}:{str(e)}")
+                print(f"Error processing app command {command}: {e}")
+                await client.send(f"egm:result:{app_ip}:{command}:{str(e)}")
 
     async def run_manager_command(self, client, command):
         if command == "connected":
@@ -70,47 +71,65 @@ class EGM(LazyServer):
         if command == "ping":
             await client.send(f"egm:pong")
 
-    async def run_app_command(self, client, command):
+    async def run_app_command(self, client, command, app_ip):
         if command == "ping":
-            await client.send(f"egm:result:pong:Success")
+            await client.send(f"egm:result:{app_ip}:pong:Success")
 
         elif command == "start_explorer":
             result = "Success" if self._try_run("explorer.exe", 1) else "Failure"
-            await client.send(f"egm:result:start_explorer:{result}")
+            await client.send(f"egm:result:{app_ip}:start_explorer:{result}")
+
+        elif command == "start_task_manager":
+            result = "Success" if self._try_start("taskmgr.exe") else "Failure"
+            await client.send(f"egm:result:{app_ip}:start_task_manager:{result}")
 
         elif command == "stop_automakro":
             result = "Success" if self._try_kill("AutoMakro.exe") else "Failure"
-            await client.send(f"egm:result:stop_automakro:{result}")
+            await client.send(f"egm:result:{app_ip}:stop_automakro:{result}")
 
         elif command == "start_automakro":
             result = "Success" if self._try_start("AutoMakro.exe", cwd="D:/AutoMakro") else "Failure"
-            await client.send(f"egm:result:start_automakro:{result}")
+            await client.send(f"egm:result:{app_ip}:start_automakro:{result}")
 
         elif command == "stop_egmc":
             result = "Success" if self._try_kill("EGMController.exe", force=False) else "Failure"
-            await client.send(f"egm:result:stop_egmc:{result}")
+            await client.send(f"egm:result:{app_ip}:stop_egmc:{result}")
 
         elif command == "start_egmc":
             result = "Success" if self._try_start("EGMController.exe", cwd="D:/EGMController") else "Failure"
-            await client.send(f"egm:result:start_egmc:{result}")
+            await client.send(f"egm:result:{app_ip}:start_egmc:{result}")
 
         elif command == "clear_ram":
             try:
-                Path("E:/Storage").unlink(missing_ok=True)
-                await client.send(f"egm:result:clear_ram:Success")
+                rmtree("E:/Storage")
+                await client.send(f"egm:result:{app_ip}:clear_ram:Success")
+            except FileNotFoundError:
+                await client.send(f"egm:result:{app_ip}:clear_ram:No files to delete")
             except Exception as e:
-                await client.send(f"egm:result:clear_ram:Failure")
+                await client.send(f"egm:result:{app_ip}:clear_ram:Failure - {e}")
 
         elif command == "f1":
             pyautogui.press("f1")
-            await client.send(f"egm:result:f1:Success")
+            await client.send(f"egm:result:{app_ip}:f1:Success")
 
-        elif command == "f2":
+        elif command == "alt_tab":
             pyautogui.hotkey('alt', 'tab', interval=0.2)
-            await client.send(f"egm:result:alt_tab:Success")
+            await client.send(f"egm:result:{app_ip}:alt_tab:Success")
+
+        elif command == "a":
+            pass
+
+        elif command == "b":
+            pass
+
+        elif command == "c":
+            pass
+
+        elif command == "d":
+            pass
 
         else:
-            await client.send(f"egm:result:{command}:Unknown command")
+            await client.send(f"egm:result:{app_ip}:{command}:Unknown command")
 
     def _try_kill(self, process_name, force=True):
         command = f"taskkill {'/F' if force else ''} /IM {process_name}"

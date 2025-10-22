@@ -102,7 +102,7 @@ class ConnectionManager:
                 await self._connect_to_app(ip)
 
             for app in self.apps.values():
-                if app.connection.state != websockets.protocol.State.OPEN:
+                if app.connection.state > websockets.protocol.State.OPEN:
                     try:
                         self.logger.info(f"Reconnecting to app {app.ip}...")
                         ws = await websockets.connect(f"ws://{app.ip}:{self.app_port}")
