@@ -125,12 +125,8 @@ class KeyboardInput(TextInput):
         print(f"Key pressed: {key_name}")
         if key_name == 'backspace':
             self.executor.on_key_press('backspace')
-        elif key_name == 'tab':
-            self.executor.on_key_press('tab')
         elif key_name == 'shift':
             self.executor.on_key_press('shift')
-        elif key_name == 'spacebar':
-            self.executor.on_key_press(' ')
         elif key_name == 'escape':
             self.executor.on_key_press('escape')
         elif key_name == 'lctrl':
