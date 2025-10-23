@@ -11,6 +11,7 @@ Config.set(
     ],
 )
 
+import json
 import asyncio
 import threading
 from printmoji import print
@@ -24,6 +25,7 @@ from kivy.uix.screenmanager import ScreenManager
 from ui_components import MainBox
 from ui_device_list import DeviceList
 from ui_properties import DeviceProperties, SiteProperties
+from ui_trackpad import TrackpadScreen
 
 
 class Manager:
@@ -46,7 +48,7 @@ class MainApp(App):
     POSITIVE = 0.263, 0.667, 0.545, 1
     NEGATIVE = 0.976, 0.255, 0.267, 1
     NEUTRAL = 0.976, 0.78, 0.31, 1
-    BLACK = 0, 0, 0, 1
+    BLACK = 0.1, 0.1, 0.1, 1
     WHITE = 1, 1, 1, 1
     BUTTON_UP = 0.11, 0.239, 0.349, 1
     BUTTON_DOWN = 0.051, 0.173, 0.278, 1
@@ -56,6 +58,7 @@ class MainApp(App):
         Builder.load_file("ui_components.kv")
         Builder.load_file("ui_device_list.kv")
         Builder.load_file("ui_properties.kv")
+        Builder.load_file("ui_trackpad.kv")
         self.server = LazyServer(name="LazyApp", host="0.0.0.0", port=8767, broadcast=True)
         self.server_thread = threading.Thread(target=self.server.start, daemon=True)
         self.server.process_message = self.process_message
@@ -65,16 +68,20 @@ class MainApp(App):
         Clock.schedule_interval(lambda dt: self.update_devices(), 10)
 
     def build_device_list_screen(self):
-        self.device_list = DeviceList(self, name="devices")
+        self.device_list = DeviceList(name="devices")
         return self.device_list
 
     def build_device_properties_screen(self):
-        self.device_properties = DeviceProperties(self, name="device_properties")
+        self.device_properties = DeviceProperties(name="device_properties")
         return self.device_properties
 
     def build_site_properties_screen(self):
-        self.site_properties = SiteProperties(self, name="site_properties")
+        self.site_properties = SiteProperties(name="site_properties")
         return self.site_properties
+
+    def build_trackpad_screen(self):
+        self.trackpad = TrackpadScreen(name="trackpad")
+        return self.trackpad
 
     def build(self):
         print("Building!")
@@ -84,6 +91,7 @@ class MainApp(App):
         self.screen_manager.add_widget(self.build_device_list_screen())
         self.screen_manager.add_widget(self.build_device_properties_screen())
         self.screen_manager.add_widget(self.build_site_properties_screen())
+        self.screen_manager.add_widget(self.build_trackpad_screen())
         self.screen_manager.current = "devices"
 
         layout = MainBox(orientation="vertical")
@@ -94,41 +102,41 @@ class MainApp(App):
 
     def update_devices(self):
         print("🟪Updating device list")
-        self._manager.send("app:list_devices")
+        message = {"sender": "app", "command": "device_info"}
+        self._manager.send(json.dumps(message))
 
-    def add_device(self, properties):
-        _properties = {}
-        for prop in properties.split("&"):
-            k, v = prop.split("=")
-            _properties[k] = v
-        properties = _properties
-        self.device_list.add_or_update_device(properties)
-        print(f"🟩Added/Updated device {properties.get('ip', 'Unknown IP')}")
+    def add_device(self, data):
+        self.device_list.add_or_update_device(data["result"])
+        print(f"🟩Added/Updated device {data['result'].get('ip', 'Unknown IP')}")
 
     async def process_message(self, client, message):
-        split = message.split(":")
-        sender, command = split[0], split[1:]
+        data = json.loads(message)
+        sender, command = data["sender"], data["command"]
         print(f"Received message from {sender}: {command}")
 
         if sender == "manager":
-            if command[0] == "connected":
+            if command == "register":
                 self._manager.client = client
                 print("🟨Connected to manager")
                 self.status.text = "Connected to manager"
                 self.update_devices()
                 return
-            if command[0] == "egm":
-                Clock.schedule_once(lambda dt: self.add_device(command[1]))
+            
+            elif command == "device_info":
+                Clock.schedule_once(lambda dt: self.add_device(data))
                 return
-            if command[1] == "status":
-                status_message = ":".join(command[2:])
-                print(f"🟨Manager status: {status_message}")
-                self.status.text = f"Manager: {status_message}"
+            
+            else:
+                self.status.text = f"Manager: {data['result']}"
 
-        if sender == "egm" and command[0] == "result":
-            _, __, agent_ip, command, result = message.split(":", 4)
+            
+        if sender == "egm":
+            result = data["result"]
+            command = data["command"]
+            agent_ip = data["sender_ip"]
+
             print(f"🟨EGM {agent_ip} - {command} result: {result}")
-            self.status.text = f"EGM {agent_ip} - {command}: {result}"
+            self.status.text = f"{agent_ip} - {command}: {result}"
 
 
 if __name__ == "__main__":

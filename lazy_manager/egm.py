@@ -14,6 +14,7 @@ class EGM:
         self.bv_type = properties.get("bv_type")
         self.type = properties.get("type")
         self.lazy_egm_version = properties.get("lazy_egm_version", "unknown")
+        self.last_seen = 0
         self.status = "Offline"
 
     async def is_reachable(self):
@@ -30,7 +31,7 @@ class EGM:
         return True
     
     def serialize(self):
-        config = {
+        return {
             "ip": self.ip,
             "id": self.id,
             "site": self.site,
@@ -39,7 +40,6 @@ class EGM:
             "status": self.status,
             "lazy_egm_version": self.lazy_egm_version
         }
-        return "&".join([f"{k}={v}" for k, v in config.items()])
 
     def __str__(self):
         return f"EGM {self.id}"

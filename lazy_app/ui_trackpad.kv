@@ -1,0 +1,52 @@
+#:kivy 2.1.3
+<TrackpadScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 30
+        
+        TitleBar:
+            title: 'Trackpad'
+            back_screen: 'device_properties'
+        
+        KeyboardInput:
+            executor: root
+            size_hint_y: None
+            height: 40
+            multiline: False
+            background_color: (0, 0, 0, 0)
+            foreground_color: (1, 1, 1, 1)
+            hint: 'Type here to send keyboard input...'
+            canvas.before:
+                Color:
+                    rgba: app.WHITE
+                Line:
+                    rounded_rectangle:  (self.x, self.y, self.width, self.height, 10)
+                    width: 1
+                    cap: 'round'
+                    joint: 'round'
+
+        OutlinedSection:
+            size_hint: 1, 1
+            Trackpad:
+                executor: root
+                canvas.before:
+                    Color:
+                        rgba: app.BLACK
+                    RoundedRectangle:
+                        radius: [10,]
+                        size: self.size
+                        pos: self.pos
+                sensitivity: 1.5
+        
+        BoxLayout:
+            size_hint_y: 0.1
+            spacing: 10
+            
+            BorderedButton:
+                size_hint: 1, 1
+                on_press: root.on_left_click()
+            
+            BorderedButton:
+                size_hint: 1, 1
+                on_press: root.on_right_click()

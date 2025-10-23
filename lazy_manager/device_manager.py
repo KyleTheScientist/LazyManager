@@ -1,5 +1,5 @@
 import asyncio
-from distutils import command
+import json
 import logging
 from time import time
 from egm import EGM
@@ -22,16 +22,10 @@ class DeviceManager:
         self.devices = {}
         self.ping_loop = None
 
-    async def register(self, agent: Agent, properties):
+    async def register(self, agent: Agent, data):
         logger.info(f"Registering device {agent.id}")
-        _properties = {}
-        for prop in properties.split("&"):
-            k, v = prop.split("=")
-            _properties[k] = v
-        properties = _properties
 
-        if len(properties) == 1:
-            logger.warning(f"{agent} sent no properties. It probably failed to load its config.")
+        properties = data["result"]
 
         if agent.ip in self.devices:
             await self.devices[agent.ip].agent.close()
@@ -42,23 +36,31 @@ class DeviceManager:
         if not self.ping_loop:
             self.ping_loop = asyncio.create_task(self.ping_devices())
 
-    async def handle(self, agent: Agent, message: str):
-        split = message.split(":", 1)
-        if split[0] == "register":
-            await self.register(agent, split[1])
+    async def handle(self, agent: Agent, data: dict):
+        if data["command"] == "register":
+            await self.register(agent, data)
 
-        if split[0] == "pong":
+        if data["command"] == "ping":
             self.devices[agent.ip].status = "Online"
             self.devices[agent.ip].last_seen = time()
 
     async def ping_devices(self):
         while True:
             device_ips = list(self.devices.keys())
+
             for ip in device_ips:
                 device = self.devices[ip]
+
+                if time() - device.last_seen < 10:
+                    continue  # Recently seen, skip ping
+
                 try:
-                    # logger.info(f"Pinging device {device} {device.agent.connection.state}")
-                    await device.agent.send(f"manager:ping")
+                    message = {
+                        "sender": "manager",
+                        "command": "ping",
+                    }
+                    await device.agent.send(json.dumps(message))
+                    device.last_seen = time()
                     device.status = "Online"
                 except ConnectionClosed:
                     logger.warning(f"{device.ip} Ping failed: Connection closed.")
@@ -67,4 +69,6 @@ class DeviceManager:
                 except Exception as e:
                     device.status = "Offline"
                     logger.error(f"{device.ip} Ping failed: Error : {e}")
+
                 await asyncio.sleep(1)
+            await asyncio.sleep(1)

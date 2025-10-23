@@ -13,6 +13,7 @@ class AppListener(ServiceListener):
         pass
 
     def add_service(self, zeroconf, type, name):
+        self.logger.info(f"Service added: {name}")
         info = zeroconf.get_service_info(type, name)
         if info:
             ip = ".".join(map(str, info.addresses[0]))
@@ -24,10 +25,10 @@ class AppListener(ServiceListener):
                 self.logger.debug(f"Service {name} at {ip} already known")
 
     def remove_service(self, zc, type_, name):
-        self.logger.info(f"[AppListener] Service removed: {name}")
+        self.logger.info(f"Service removed: {name}")
 
     def update_service(self, zc, type_, name):
-        self.logger.debug(f"[AppListener] Service updated: {name}")
+        self.logger.debug(f"Service updated: {name}")
         self.add_service(zc, type_, name)
 
 
@@ -92,10 +93,8 @@ class ConnectionManager:
         await asyncio.gather(*tasks)
 
     async def try_connect_apps(self):
-        self.logger.info("Searching for apps...")
         while True:
             for ip in self.listener.ips:
-                ip = self.listener.ips[0]
                 if ip in self.apps and self.apps[ip].connection.state == websockets.protocol.State.OPEN:
                     continue  # Already connected
                 self.logger.info(f"Discovered app: {ip}")
@@ -103,13 +102,15 @@ class ConnectionManager:
 
             for app in self.apps.values():
                 if app.connection.state > websockets.protocol.State.OPEN:
-                    try:
-                        self.logger.info(f"Reconnecting to app {app.ip}...")
-                        ws = await websockets.connect(f"ws://{app.ip}:{self.app_port}")
-                        await self.on_app_connect(app)
-                        app.connection = ws
-                    except Exception as e:
-                        self.logger.warning(f"Failed to reconnect to app {app.ip}: {e}")
+                    self.logger.info(f"Reconnecting to app {app.ip}")
+                    async def reconnect():
+                        try:
+                            ws = await websockets.connect(f"ws://{app.ip}:{self.app_port}")
+                            await self.on_app_connect(app)
+                            app.connection = ws
+                        except Exception as e:
+                            pass
+                    asyncio.create_task(reconnect())
             await asyncio.sleep(2)
 
     async def _connect_to_app(self, ip: str):

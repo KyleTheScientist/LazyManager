@@ -21,26 +21,6 @@
         color: root.color
         font_size: 18
 
-<TitleBar>:
-    size_hint_y: None
-    height: 100
-    orientation: 'horizontal'
-    
-    BorderedButton:
-        text: "<"
-        size_hint: None, None  # Disable size hinting for absolute sizing
-        size: 100, 100         # Set a specific size
-        on_press:
-            app.screen_manager.transition.direction = 'right'
-            app.screen_manager.current = 'devices'
-    
-    Label:
-        text: root.title
-        size_hint_x: None
-        width: max(self.parent.width - 200, 0)
-        height: 100
-        font_size: 48
-
 <ActionButtonGroup>:
     # Action buttons
     spacing: 20
@@ -100,6 +80,14 @@
         text: 'Clear RAM'
         on_press: root.executor.clear_ram()
         color: app.NEGATIVE
+
+    BorderedButton:
+        text: 'Trackpad'
+        on_press: 
+            app.trackpad.device = root.executor.device
+            app.screen_manager.transition.direction = 'left'
+            app.screen_manager.current = 'trackpad'
+        color: app.NEUTRAL
 
     HeightBox:
         padding: 0
@@ -175,6 +163,8 @@
 <SiteProperties>:
     BoxLayout:
         orientation: 'vertical'
+        padding: 20
+        spacing: 25
 
         TitleBar:
             title: root.site.name

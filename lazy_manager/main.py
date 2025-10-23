@@ -1,6 +1,5 @@
-import asyncio
-import logging
-import psutil
+from distutils import command
+import json
 from lazy_logging import get_logger
 from connection_manager import ConnectionManager, App, Agent
 from device_manager import DeviceManager
@@ -18,8 +17,7 @@ APP_PORT = 8767
 # AGENT_IPS = [f"10.0.0.{i}" for i in range(2, 28)]
 # AGENT_IPS.remove("10.0.0.3")  # Exclude POS terminal
 
-AGENT_IPS = ["127.0.0.1"] # For testing purposes
-
+AGENT_IPS = ["127.0.0.1"]  # For testing purposes
 
 
 class LazyManager(ConnectionManager):
@@ -29,48 +27,69 @@ class LazyManager(ConnectionManager):
         self.device_manager = DeviceManager()
 
     async def handle_agent_message(self, message: str, agent: Agent):
-        if 'pong' not in message:
-            logger.info(f"Received message from agent {agent.ip}: {message}")
-        
-        sender, command = message.split(":", 1)
-        if command.startswith("result:"):
-            print(message)
-            _, app_ip, command, result = command.split(":", 3)
+        data = json.loads(message)
+
+        if "app_ip" in data:
+            app_ip = data["app_ip"]
             app = self.apps.get(app_ip, None)
-            if not app:
+
+            if app:
+                logger.info(f"Forwarding result from device {agent.ip} to app {app.ip}")
+                data.update(sender_ip=agent.ip)
+                await app.send(json.dumps(data))
+            else:
                 logger.warning(f"App '{app_ip}' not found for forwarding result of device {agent.ip}")
-                return
-            logger.info(f"Forwarding result from device {agent.ip} to app {app.ip}")
-            await app.send(f"egm:result:{agent.ip}:{command}:{result}")
-        
-        if sender == "egm":
-            await self.device_manager.handle(agent, command)
+            
+            return
+
+        await self.device_manager.handle(agent, data)
 
     async def handle_app_message(self, message: str, app: App):
-        sender, command = message.split(":", 1)
-        if command == "list_devices":
+        data = json.loads(message)
+        
+        if data['command'] == "device_info":
             logger.info(f"Listing {len(self.device_manager.devices)} devices for app {app.ip}")
+            
             for egm in self.device_manager.devices.values():
-                await app.send(f"manager:egm:{egm.serialize()}")
+                message = {
+                    "sender": "manager",
+                    "command": "device_info",
+                    "result": egm.serialize()
+                }
+                await app.send(json.dumps(message))
             return
 
-        split = command.split(":", 1)
-        command, target = split[0], split[1]
+        target = data.get("target")
         device = self.device_manager.devices.get(target, None)
         if not device:
-            logger.warning(f"Device {target} not found for command {command}")
-            await app.send(f"manager:status:Device {target} not found")
+            logger.warning(f"Device {target} not found for command {data['command']}")
+            message  = dict(
+                sender="manager",
+                result=f"Device {target} not found",
+                **data
+            )
+            await app.send(json.dumps(message))
             return
-        
-        await device.agent.send(f"app:{command}:{app.ip}")
+
+        data.update(sender_ip=app.ip)
+        await device.agent.send(json.dumps(data))
 
     async def on_agent_connect(self, agent: Agent):
         logger.info(f"Agent connected: {agent}")
-        await agent.send("manager:connected")
+        message = {
+            "sender": "manager",
+            "command": "register",
+        }
+        await agent.send(json.dumps(message))
 
     async def on_app_connect(self, app: App):
         logger.info(f"App connected: {app}")
-        await app.send("manager:connected")
+        message = {
+            "sender": "manager",
+            "command": "register",
+        }
+        await app.send(json.dumps(message))
+
 
 if __name__ == "__main__":
     server = LazyManager()

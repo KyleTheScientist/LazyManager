@@ -22,14 +22,14 @@
             radius: [10,]
             size: self.size
             pos: (self.x + 7, self.y - 10)
-        
+
         Color:
             rgba: app.BUTTON_DOWN if self.state == "down" else app.BUTTON_UP
         RoundedRectangle:
             radius: [10,]
             size: self.size
             pos: (self.x + 2, self.y - 4) if self.state == "down" else self.pos
-        
+
         # Color:
         #     rgba: app.WHITE
         # Line:
@@ -56,7 +56,7 @@
 <OutlinedSection>:
     padding: 20
     spacing: 20
-    
+
     canvas.before:
         Color:
             rgba: app.WHITE
@@ -65,3 +65,23 @@
             width: 1
             cap: 'round'
             joint: 'round'
+
+<TitleBar>:
+    size_hint_y: None
+    height: 100
+    orientation: 'horizontal'
+
+    BorderedButton:
+        text: "<"
+        size_hint: None, None
+        size: 100, 100
+        on_press:
+            app.screen_manager.transition.direction = 'right'
+            app.screen_manager.current = root.back_screen
+
+    Label:
+        text: root.title
+        size_hint_x: None
+        width: max(self.parent.width - 200, 0)
+        height: 100
+        font_size: 48
