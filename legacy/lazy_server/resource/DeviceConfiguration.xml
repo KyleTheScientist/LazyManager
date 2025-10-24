@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<EGMConfiguration Version="1.0">
+  <Param name="ActiveDoors" value="" />
+  <Param name="BillValidatorType" value="{bv_type}" />
+  <Param name="BillValidatorPort" value="4" />
+  <Param name="ProgressiveDisplayType" value="None" />
+  <Param name="ProgressiveDisplayPort" value="0" />
+  <Param name="ReceiptPrinterType" value="None" />
+  <Param name="ReceiptPrinterPort" value="0" />
+  <Param name="TicketPrinterType" value="IthacaEpic950" />
+  <Param name="TicketPrinterPort" value="5" />
+  <Param name="IOBoardType" value="GTSource" />
+  <Param name="CardReaderType" value="None" />
+  <Param name="TopScreenAspectRatio" value="_None" />
+  <Param name="MainScreenAspectRatio" value="_None" />
+  <Param name="LEDControllerType" value="None" />
+  <Param name="HapticsDriverType" value="None" />
+  <Param name="IO_Config" value="LCD_1280x242" />
+</EGMConfiguration>

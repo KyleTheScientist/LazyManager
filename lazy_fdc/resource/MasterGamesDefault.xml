@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Games Version="25.2.17.1" Purpose="Release">
+    <GamingJurisdiction Value="ClassII" Engine="MGP">
+        <!--
+		<Entry Order="0" GameID="9000" DisplayName="N4Template" Directory="N4Template_Vertical" PaytableName="1024WaysDX" AllowedPercentages="94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+        -->
+        <Entry Order="0" GameID="2614" DisplayName="Sugar Skulls" Directory="SugarSkulls1600" PaytableName="MultiSpinBonusWheel" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3"></Entry>
+        <Entry Order="0" GameID="2621" DisplayName="Devil's Deux" Directory="DevilsDeux1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2621" DisplayName="Devil's Deux" Directory="DevilsDeux1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2622" DisplayName="Spinning7s" Directory="Spinning7s1600" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001"></Entry>
+        <Entry Order="0" GameID="2623" DisplayName="Damn Hot" Directory="DamnHot1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2623" DisplayName="Damn Hot" Directory="DamnHot1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2624" DisplayName="Eskimo Ice" Directory="EskimoIce1600" PaytableName="MultiSpinBonusWheel" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3"></Entry>
+        <Entry Order="0" GameID="2625" DisplayName="Sugar Riches" Directory="SugarRiches1600" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2638" DisplayName="Big Red" Directory="BigRed1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2638" DisplayName="Big Red" Directory="BigRed1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2640" DisplayName="Samurai" Directory="Samurai1600" PaytableName="LockingStackedWildsSS" AllowedPercentages="94,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="LSW-01,LSW-02,LSW-03,LSW-04"></Entry>
+        <Entry Order="0" GameID="2626" DisplayName="Community Game" Directory="JackpotDerby" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001"></Entry>
+        <Entry Order="0" GameID="2642" DisplayName="Better Cheddar" Directory="BetterCheddar1600" PaytableName="20LineTSPS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2643" DisplayName="Good Morning Jackpot" Directory="GoodMorningJackpot1600" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2648" DisplayName="SugarSkulls" Directory="SugarSkulls_Vertical" PaytableName="MultiSpinBonusWheel" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3" VariantName=""></Entry>
+        <Entry Order="0" GameID="2649" DisplayName="Spinning7s" Directory="Spinning7s_Vertical" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001"></Entry>
+        <Entry Order="0" GameID="2650" DisplayName="Soul of the Samurai" Directory="Samurai_Vertical" PaytableName="LockingStackedWildsSS" AllowedPercentages="94,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="LSW-01,LSW-02,LSW-03,LSW-04"></Entry>
+        <Entry Order="0" GameID="2651" DisplayName="Devil's Deux" Directory="DevilsDeux_Vertical"  PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2651" DisplayName="Devil's Deux" Directory="DevilsDeux_Vertical"  PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2655" DisplayName="Better Cheddar" Directory="BetterCheddar_Vertical" PaytableName="20LineTSPS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2656" DisplayName="Sugar Riches" Directory="SugarRiches_Vertical" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2657" DisplayName="Big Red" Directory="BigRed_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2657" DisplayName="Big Red" Directory="BigRed_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2658" DisplayName="Damn Hot" Directory="DamnHot_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2658" DisplayName="Damn Hot" Directory="DamnHot_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2664" DisplayName="Blazin' Gems" Directory="Blazin2_Vertical" PaytableName="25Line" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+		<Entry Order="0" GameID="2666" DisplayName="Tyche" Directory="Tyche_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2666" DisplayName="Tyche" Directory="Tyche_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2667" DisplayName="Devil's Gold" Directory="DevilsGold_Vertical" PaytableName="25Line" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2668" DisplayName="Storm By The Nile" Directory="StormByTheNile_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2668" DisplayName="Storm By The Nile" Directory="StormByTheNile_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2670" DisplayName="Mayan Royale" Directory="MayanRoyale_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2670" DisplayName="Mayan Royale" Directory="MayanRoyale_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2671" DisplayName="Good Morning Jackpot" Directory="GoodMorningJackpot_Vertical" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2674" DisplayName="Voodoo" Directory="Voodoo_Vertical" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2675" DisplayName="Eskimo Ice" Directory="EskimoIce_Vertical" PaytableName="MultiSpinBonusWheel" AllowedPercentages="94,96" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3"></Entry>
+		<Entry Order="0" GameID="2677" DisplayName="Devil's Gold" Directory="DevilsGold1600" PaytableName="25Line" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+		<Entry Order="0" GameID="2678" DisplayName="Tyche" Directory="Tyche1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+		<Entry Order="0" GameID="2678" DisplayName="Tyche" Directory="Tyche1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2679" DisplayName="Voodoo" Directory="Voodoo1600" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2680" DisplayName="Mayan Royale" Directory="MayanRoyale1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2680" DisplayName="Mayan Royale" Directory="MayanRoyale1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2681" DisplayName="Storm By The Nile" Directory="StormByTheNile1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2681" DisplayName="Storm By The Nile" Directory="StormByTheNile1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+		<!-- Fireshot Ultra -->
+		<Entry Order="0" GameID="2687" DisplayName="Wicked Ways Ultra" Directory="WickedWaysDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+        <Entry Order="0" GameID="2688" DisplayName="Inferno Tiger Ultra" Directory="InfernoTigerDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2689" DisplayName="Blazing Wolf Ultra" Directory="BlazingWolfDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+        <Entry Order="0" GameID="2690" DisplayName="Toro De Fuego Ultra" Directory="ToroDeFuegoDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+		<!-- Legends of Myth -->
+		<Entry Order="0" GameID="2693" DisplayName="Wukong" Directory="Wukong_Vertical" PaytableName="LegendsOfMyth" AllowedPercentages="92,95" Percentage="92" Denoms="1,2,5,10,25" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2693" DisplayName="Wukong" Directory="Wukong_Vertical" PaytableName="LegendsOfMythLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName="LowVol"></Entry>
+		<Entry Order="0" GameID="2694" DisplayName="Imperial Guardian" Directory="ImperialGuardian_Vertical" PaytableName="LegendsOfMyth" AllowedPercentages="92,95" Percentage="92" Denoms="1,2,5,10,25" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2694" DisplayName="Imperial Guardian" Directory="ImperialGuardian_Vertical" PaytableName="LegendsOfMythLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName="LowVol"></Entry>
+		<Entry Order="0" GameID="2695" DisplayName="Cyan Dragon" Directory="CyanDragon_Vertical" PaytableName="LegendsOfMyth" AllowedPercentages="92,95" Percentage="92" Denoms="1,2,5,10,25" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2695" DisplayName="Cyan Dragon" Directory="CyanDragon_Vertical" PaytableName="LegendsOfMythLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName="LowVol"></Entry>
+		<!-- Yomi No Oni -->
+		<Entry Order="0" GameID="2696" DisplayName="Yomi No Oni" Directory="Oni_Vertical" PaytableName="25LineMD" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10" Progressives="MD-01" VariantName=""></Entry>
+		<Entry Order="0" GameID="2696" DisplayName="Yomi No Oni" Directory="Oni_Vertical" PaytableName="25LineMDLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD-01" VariantName="LowVol"></Entry>
+		<!-- Rainbow Rush -->
+		<Entry Order="0" GameID="2697" DisplayName="Rainbow Rush" Directory="RainbowRush_Vertical" PaytableName="1024WaysDX" AllowedPercentages="92,94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2698" DisplayName="Dynamite Duke" Directory="DynamiteDuke_Vertical" PaytableName="1024WaysDX" AllowedPercentages="92,94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2699" DisplayName="Big Ass Stampede DX" Directory="BigAssStampedeDX_Vertical" PaytableName="1024WaysDX" AllowedPercentages="92,94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+		<!-- Fortune Festival -->
+		<Entry Order="0" GameID="2700" DisplayName="Xin Nian" Directory="XinNian_Vertical" PaytableName="PickVolatility" Percentage="94" AllowedPercentages="92,94,95" Denoms="1,2,5,10,25" Progressives="PickVol-01,PickVol-02,PickVol-03,PickVol-04"></Entry>
+		<Entry Order="0" GameID="2701" DisplayName="Duan Wu" Directory="DuanWu_Vertical" PaytableName="PickVolatility" Percentage="94" AllowedPercentages="92,94,95" Denoms="1,2,5,10,25" Progressives="PickVol-01,PickVol-02,PickVol-03,PickVol-04"></Entry>
+        <Entry Order="0" GameID="2702" DisplayName="Zhong Qiu" Directory="ZhongQiu_Vertical" PaytableName="PickVolatility" Percentage="94" AllowedPercentages="92,94,95" Denoms="1,2,5,10,25" Progressives="PickVol-01,PickVol-02,PickVol-03,PickVol-04"></Entry>
+        <!-- MD3 -->
+        <Entry Order="0" GameID="2703" DisplayName="Hot Royale" Directory="HotRoyale_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02"></Entry>
+        <Entry Order="0" GameID="2703" DisplayName="Hot Royale" Directory="HotRoyale_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+        <Entry Order="0" GameID="2704" DisplayName="Thunderbird" Directory="Thunderbird_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02" VariantName=""></Entry>
+        <Entry Order="0" GameID="2704" DisplayName="Thunderbird" Directory="Thunderbird_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+		<Entry Order="0" GameID="2705" DisplayName="Big Buckin' Bronco" Directory="BigBuckinBronco_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02" VariantName=""></Entry>
+		<Entry Order="0" GameID="2705" DisplayName="Big Buckin' Bronco" Directory="BigBuckinBronco_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+		<!--
+        <Entry Order="0" GameID="2707" DisplayName="Wild Rampage" Directory="WildRampage_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02" VariantName=""></Entry>
+		<Entry Order="0" GameID="2707" DisplayName="Wild Rampage" Directory="WildRampage_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+		-->
+        <!--
+        <Entry Order="0" GameID="2708" DisplayName="MD5" Directory="MD5_Vertical" PaytableName="25LineMD3" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02"></Entry>
+        -->
+        
+		<!-- Devil's ReDeux -->
+        <Entry Order="0" GameID="2706" DisplayName="Devil's Re-Deux" Directory="DevilsReDeux_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2706" DisplayName="Devil's Re-Deux" Directory="DevilsReDeux_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+		
+        <!-- Legends Unlocked -->
+        <!--
+		<Entry Order="0" GameID="2709" DisplayName="Medusa" Directory="Medusa_Vertical" PaytableName="LockAndKey" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="LockAndKey-01,LockAndKey-02,LockAndKey-03,LockAndKey-04"></Entry>
+		<Entry Order="0" GameID="2710" DisplayName="Hades" Directory="Hades_Vertical" PaytableName="LockAndKey" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="LockAndKey-01,LockAndKey-02,LockAndKey-03,LockAndKey-04"></Entry>
+		<Entry Order="0" GameID="2711" DisplayName="Artemis" Directory="Artemis_Vertical" PaytableName="LockAndKey" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="LockAndKey-01,LockAndKey-02,LockAndKey-03,LockAndKey-04"></Entry>
+        -->
+		<!-- Ruby Rush -->
+		<!--
+		<Entry Order="0" GameID="2712" DisplayName="Aztlan" Directory="Aztlan_Vertical" PaytableName="40Line" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="40Line-01"></Entry>
+		<Entry Order="0" GameID="2713" DisplayName="Tundra" Directory="Tundra_Vertical" PaytableName="40Line" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="40Line-01"></Entry>
+		<Entry Order="0" GameID="2714" DisplayName="Kahakai" Directory="Kahakai_Vertical" PaytableName="40Line" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="40Line-01"></Entry>
+		-->
+	</GamingJurisdiction>
+    <GamingJurisdiction Value="PullTab" Engine="MGP">
+		<!--
+        <Entry Order="0" GameID="9000" DisplayName="N4Template" Directory="N4Template_Vertical" PaytableName="1024WaysDX" AllowedPercentages="94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+		-->		
+        <Entry Order="0" GameID="2614" DisplayName="Sugar Skulls" Directory="SugarSkulls1600" PaytableName="MultiSpinBonusWheelSS" AllowedPercentages="94,96" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3"></Entry>
+        <Entry Order="0" GameID="2621" DisplayName="Devil's Deux" Directory="DevilsDeux1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2621" DisplayName="Devil's Deux" Directory="DevilsDeux1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2621" DisplayName="Devil's Deux" Directory="DevilsDeux1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+		<Entry Order="0" GameID="2622" DisplayName="Spinning7s" Directory="Spinning7s1600" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001"></Entry>
+        <Entry Order="0" GameID="2623" DisplayName="Damn Hot" Directory="DamnHot1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2623" DisplayName="Damn Hot" Directory="DamnHot1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2623" DisplayName="Damn Hot" Directory="DamnHot1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2624" DisplayName="Eskimo Ice" Directory="EskimoIce1600" PaytableName="MultiSpinBonusWheelSS" AllowedPercentages="94,96" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3"></Entry>
+        <Entry Order="0" GameID="2625" DisplayName="Sugar Riches" Directory="SugarRiches1600" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2638" DisplayName="Big Red" Directory="BigRed1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2638" DisplayName="Big Red" Directory="BigRed1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2638" DisplayName="Big Red" Directory="BigRed1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2640" DisplayName="Samurai" Directory="Samurai1600" PaytableName="LockingStackedWildsSS" AllowedPercentages="94,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="LSW-01,LSW-02,LSW-03,LSW-04"></Entry>
+        <Entry Order="0" GameID="2642" DisplayName="Better Cheddar" Directory="BetterCheddar1600" PaytableName="20LineTSPS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2643" DisplayName="Good Morning Jackpot" Directory="GoodMorningJackpot1600" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2648" DisplayName="SugarSkulls" Directory="SugarSkulls_Vertical" PaytableName="MultiSpinBonusWheelSS" AllowedPercentages="94,96" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3" VariantName=""></Entry>
+        <Entry Order="0" GameID="2649" DisplayName="Spinning7s" Directory="Spinning7s_Vertical" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001"></Entry>
+        <Entry Order="0" GameID="2650" DisplayName="Soul of the Samurai" Directory="Samurai_Vertical" PaytableName="LockingStackedWildsSS" AllowedPercentages="94,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="LSW-01,LSW-02,LSW-03,LSW-04"></Entry>
+        <Entry Order="0" GameID="2651" DisplayName="Devil's Deux" Directory="DevilsDeux_Vertical"  PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2651" DisplayName="Devil's Deux" Directory="DevilsDeux_Vertical"  PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2651" DisplayName="Devil's Deux" Directory="DevilsDeux_Vertical"  PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2655" DisplayName="Better Cheddar" Directory="BetterCheddar_Vertical" PaytableName="20LineTSPS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2656" DisplayName="Sugar Riches" Directory="SugarRiches_Vertical" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2657" DisplayName="Big Red" Directory="BigRed_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2657" DisplayName="Big Red" Directory="BigRed_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2657" DisplayName="Big Red" Directory="BigRed_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2658" DisplayName="Damn Hot" Directory="DamnHot_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2658" DisplayName="Damn Hot" Directory="DamnHot_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2658" DisplayName="Damn Hot" Directory="DamnHot_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2664" DisplayName="Blazin' Gems" Directory="Blazin2_Vertical" PaytableName="25Line" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+		<Entry Order="0" GameID="2666" DisplayName="Tyche" Directory="Tyche_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2666" DisplayName="Tyche" Directory="Tyche_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2666" DisplayName="Tyche" Directory="Tyche_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2667" DisplayName="Devil's Gold" Directory="DevilsGold_Vertical" PaytableName="25Line" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2668" DisplayName="Storm By The Nile" Directory="StormByTheNile_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2668" DisplayName="Storm By The Nile" Directory="StormByTheNile_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2668" DisplayName="Storm By The Nile" Directory="StormByTheNile_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2670" DisplayName="Mayan Royale" Directory="MayanRoyale_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2670" DisplayName="Mayan Royale" Directory="MayanRoyale_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2670" DisplayName="Mayan Royale" Directory="MayanRoyale_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2671" DisplayName="Good Morning Jackpot" Directory="GoodMorningJackpot_Vertical" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2674" DisplayName="Voodoo" Directory="Voodoo_Vertical" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2675" DisplayName="Eskimo Ice" Directory="EskimoIce_Vertical" PaytableName="MultiSpinBonusWheelSS" AllowedPercentages="94,96" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3"></Entry>
+		<Entry Order="0" GameID="2677" DisplayName="Devil's Gold" Directory="DevilsGold1600" PaytableName="25Line" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+		<Entry Order="0" GameID="2678" DisplayName="Tyche" Directory="Tyche1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+		<Entry Order="0" GameID="2678" DisplayName="Tyche" Directory="Tyche1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+		<Entry Order="0" GameID="2678" DisplayName="Tyche" Directory="Tyche1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2679" DisplayName="Voodoo" Directory="Voodoo1600" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2680" DisplayName="Mayan Royale" Directory="MayanRoyale1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2680" DisplayName="Mayan Royale" Directory="MayanRoyale1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2680" DisplayName="Mayan Royale" Directory="MayanRoyale1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2681" DisplayName="Storm By The Nile" Directory="StormByTheNile1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2681" DisplayName="Storm By The Nile" Directory="StormByTheNile1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2681" DisplayName="Storm By The Nile" Directory="StormByTheNile1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+		<!-- Fireshot Ultra -->
+		<Entry Order="0" GameID="2687" DisplayName="Wicked Ways Ultra" Directory="WickedWaysDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+        <Entry Order="0" GameID="2688" DisplayName="Inferno Tiger Ultra" Directory="InfernoTigerDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2689" DisplayName="Blazing Wolf Ultra" Directory="BlazingWolfDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+        <Entry Order="0" GameID="2690" DisplayName="Toro De Fuego Ultra" Directory="ToroDeFuegoDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+		<!-- Legends of Myth -->
+        <Entry Order="0" GameID="2693" DisplayName="Wukong" Directory="Wukong_Vertical" PaytableName="LegendsOfMyth" AllowedPercentages="92,95" Percentage="92" Denoms="1,2,5,10,25" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2693" DisplayName="Wukong" Directory="Wukong_Vertical" PaytableName="LegendsOfMythLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2694" DisplayName="Imperial Guardian" Directory="ImperialGuardian_Vertical" PaytableName="LegendsOfMyth" AllowedPercentages="92,95" Percentage="92" Denoms="1,2,5,10,25" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2694" DisplayName="Imperial Guardian" Directory="ImperialGuardian_Vertical" PaytableName="LegendsOfMythLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2695" DisplayName="Cyan Dragon" Directory="CyanDragon_Vertical" PaytableName="LegendsOfMyth" AllowedPercentages="92,95" Percentage="92" Denoms="1,2,5,10,25" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2695" DisplayName="Cyan Dragon" Directory="CyanDragon_Vertical" PaytableName="LegendsOfMythLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<!-- Yomi No Oni -->
+		<Entry Order="0" GameID="2696" DisplayName="Yomi No Oni" Directory="Oni_Vertical" PaytableName="25LineMD" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10" Progressives="MD-01" VariantName=""></Entry>
+		<Entry Order="0" GameID="2696" DisplayName="Yomi No Oni" Directory="Oni_Vertical" PaytableName="25LineMDLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD-01" VariantName="LowVol"></Entry>
+		<!-- Rainbow Rush -->
+		<Entry Order="0" GameID="2697" DisplayName="Rainbow Rush" Directory="RainbowRush_Vertical" PaytableName="1024WaysDX" AllowedPercentages="92,94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2698" DisplayName="Dynamite Duke" Directory="DynamiteDuke_Vertical" PaytableName="1024WaysDX" AllowedPercentages="92,94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2699" DisplayName="Big Ass Stampede DX" Directory="BigAssStampedeDX_Vertical" PaytableName="1024WaysDX" AllowedPercentages="92,94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+		<!-- Fortune Festival -->
+		<Entry Order="0" GameID="2700" DisplayName="Xin Nian" Directory="XinNian_Vertical" PaytableName="PickVolatility" Percentage="94" AllowedPercentages="92,94,95" Denoms="1,2,5,10,25" Progressives="PickVol-01,PickVol-02,PickVol-03,PickVol-04"></Entry>
+        <Entry Order="0" GameID="2701" DisplayName="Duan Wu" Directory="DuanWu_Vertical" PaytableName="PickVolatility" Percentage="94" AllowedPercentages="92,94,95" Denoms="1,2,5,10,25" Progressives="PickVol-01,PickVol-02,PickVol-03,PickVol-04"></Entry>
+        <Entry Order="0" GameID="2702" DisplayName="Zhong Qiu" Directory="ZhongQiu_Vertical" PaytableName="PickVolatility" Percentage="94" AllowedPercentages="92,94,95" Denoms="1,2,5,10,25" Progressives="PickVol-01,PickVol-02,PickVol-03,PickVol-04"></Entry>
+        <!-- MD3 -->
+        <Entry Order="0" GameID="2703" DisplayName="Hot Royale" Directory="HotRoyale_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02" VariantName=""></Entry>
+        <Entry Order="0" GameID="2703" DisplayName="Hot Royale" Directory="HotRoyale_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+        <Entry Order="0" GameID="2704" DisplayName="Thunderbird" Directory="Thunderbird_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02" VariantName=""></Entry>
+        <Entry Order="0" GameID="2704" DisplayName="Thunderbird" Directory="Thunderbird_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+		<Entry Order="0" GameID="2705" DisplayName="Big Buckin' Bronco" Directory="BigBuckinBronco_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02" VariantName=""></Entry>
+		<Entry Order="0" GameID="2705" DisplayName="Big Buckin' Bronco" Directory="BigBuckinBronco_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+		<!--
+        <Entry Order="0" GameID="2707" DisplayName="Wild Rampage" Directory="WildRampage_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02" VariantName=""></Entry>
+		<Entry Order="0" GameID="2707" DisplayName="Wild Rampage" Directory="WildRampage_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+        -->
+		<!--
+        <Entry Order="0" GameID="2708" DisplayName="MD5" Directory="MD5_Vertical" PaytableName="25LineMD3" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02"></Entry>
+		-->
+        <!-- Devil's ReDeux -->
+        <Entry Order="0" GameID="2706" DisplayName="Devil's Re-Deux" Directory="DevilsReDeux_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+		<Entry Order="0" GameID="2706" DisplayName="Devil's Re-Deux" Directory="DevilsReDeux_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+		<Entry Order="0" GameID="2706" DisplayName="Devil's Re-Deux" Directory="DevilsReDeux_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+		<!-- Legends Unlocked -->
+		<!--
+        <Entry Order="0" GameID="2709" DisplayName="Medusa" Directory="Medusa_Vertical" PaytableName="LockAndKey" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="LockAndKey-01,LockAndKey-02,LockAndKey-03,LockAndKey-04"></Entry>
+		<Entry Order="0" GameID="2710" DisplayName="Hades" Directory="Hades_Vertical" PaytableName="LockAndKey" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="LockAndKey-01,LockAndKey-02,LockAndKey-03,LockAndKey-04"></Entry>
+		<Entry Order="0" GameID="2711" DisplayName="Artemis" Directory="Artemis_Vertical" PaytableName="LockAndKey" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="LockAndKey-01,LockAndKey-02,LockAndKey-03,LockAndKey-04"></Entry>
+		-->
+		<!-- Ruby Rush -->
+		<!--
+		<Entry Order="0" GameID="2712" DisplayName="Aztlan" Directory="Aztlan_Vertical" PaytableName="40Line" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="40Line-01"></Entry>
+		<Entry Order="0" GameID="2713" DisplayName="Tundra" Directory="Tundra_Vertical" PaytableName="40Line" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="40Line-01"></Entry>
+		<Entry Order="0" GameID="2714" DisplayName="Kahakai" Directory="Kahakai_Vertical" PaytableName="40Line" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="40Line-01"></Entry>
+		-->
+	</GamingJurisdiction>
+    <GamingJurisdiction Value="NebraskaSkill" Engine="MGP">
+		<!--
+		<Entry Order="0" GameID="9000" DisplayName="N4Template" Directory="N4Template_Vertical" PaytableName="1024WaysDX" AllowedPercentages="94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+		-->
+		<Entry Order="0" GameID="2614" DisplayName="Sugar Skulls" Directory="SugarSkulls1600" PaytableName="MultiSpinBonusWheelSS" AllowedPercentages="94,96" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3"></Entry>
+        <Entry Order="0" GameID="2621" DisplayName="Devil's Deux" Directory="DevilsDeux1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2621" DisplayName="Devil's Deux" Directory="DevilsDeux1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2621" DisplayName="Devil's Deux" Directory="DevilsDeux1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2622" DisplayName="Spinning7s" Directory="Spinning7s1600" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001"></Entry>
+        <Entry Order="0" GameID="2623" DisplayName="Damn Hot" Directory="DamnHot1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2623" DisplayName="Damn Hot" Directory="DamnHot1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2623" DisplayName="Damn Hot" Directory="DamnHot1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2624" DisplayName="Eskimo Ice" Directory="EskimoIce1600" PaytableName="MultiSpinBonusWheelSS" AllowedPercentages="94,96" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3"></Entry>
+        <Entry Order="0" GameID="2625" DisplayName="Sugar Riches" Directory="SugarRiches1600" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2638" DisplayName="Big Red" Directory="BigRed1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2638" DisplayName="Big Red" Directory="BigRed1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2638" DisplayName="Big Red" Directory="BigRed1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2640" DisplayName="Samurai" Directory="Samurai1600" PaytableName="LockingStackedWildsSS" AllowedPercentages="94,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="LSW-01,LSW-02,LSW-03,LSW-04"></Entry>
+        <Entry Order="0" GameID="2642" DisplayName="Better Cheddar" Directory="BetterCheddar1600" PaytableName="20LineTSPS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2643" DisplayName="Good Morning Jackpot" Directory="GoodMorningJackpot1600" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2648" DisplayName="SugarSkulls" Directory="SugarSkulls_Vertical" PaytableName="MultiSpinBonusWheelSS" AllowedPercentages="94,96" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3" VariantName=""></Entry>
+        <Entry Order="0" GameID="2649" DisplayName="Spinning7s" Directory="Spinning7s_Vertical" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001"></Entry>
+        <Entry Order="0" GameID="2650" DisplayName="Soul of the Samurai" Directory="Samurai_Vertical" PaytableName="LockingStackedWildsSS" AllowedPercentages="94,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="LSW-01,LSW-02,LSW-03,LSW-04"></Entry>
+        <Entry Order="0" GameID="2651" DisplayName="Devil's Deux" Directory="DevilsDeux_Vertical"  PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2651" DisplayName="Devil's Deux" Directory="DevilsDeux_Vertical"  PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2651" DisplayName="Devil's Deux" Directory="DevilsDeux_Vertical"  PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2655" DisplayName="Better Cheddar" Directory="BetterCheddar_Vertical" PaytableName="20LineTSPS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2656" DisplayName="Sugar Riches" Directory="SugarRiches_Vertical" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2657" DisplayName="Big Red" Directory="BigRed_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2657" DisplayName="Big Red" Directory="BigRed_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2657" DisplayName="Big Red" Directory="BigRed_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2658" DisplayName="Damn Hot" Directory="DamnHot_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2658" DisplayName="Damn Hot" Directory="DamnHot_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2658" DisplayName="Damn Hot" Directory="DamnHot_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2664" DisplayName="Blazin' Gems" Directory="Blazin2_Vertical" PaytableName="25Line" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+		<Entry Order="0" GameID="2666" DisplayName="Tyche" Directory="Tyche_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2666" DisplayName="Tyche" Directory="Tyche_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2666" DisplayName="Tyche" Directory="Tyche_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2667" DisplayName="Devil's Gold" Directory="DevilsGold_Vertical" PaytableName="25Line" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2668" DisplayName="Storm By The Nile" Directory="StormByTheNile_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2668" DisplayName="Storm By The Nile" Directory="StormByTheNile_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2668" DisplayName="Storm By The Nile" Directory="StormByTheNile_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2670" DisplayName="Mayan Royale" Directory="MayanRoyale_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2670" DisplayName="Mayan Royale" Directory="MayanRoyale_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2670" DisplayName="Mayan Royale" Directory="MayanRoyale_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2671" DisplayName="Good Morning Jackpot" Directory="GoodMorningJackpot_Vertical" PaytableName="20LineTS" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2674" DisplayName="Voodoo" Directory="Voodoo_Vertical" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2675" DisplayName="Eskimo Ice" Directory="EskimoIce_Vertical" PaytableName="MultiSpinBonusWheelSS" AllowedPercentages="94,96" Percentage="96" Denoms="1,2,5,10,25" Progressives="Tier1,Tier2,Tier3"></Entry>
+		<Entry Order="0" GameID="2677" DisplayName="Devil's Gold" Directory="DevilsGold1600" PaytableName="25Line" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+		<Entry Order="0" GameID="2678" DisplayName="Tyche" Directory="Tyche1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+		<Entry Order="0" GameID="2678" DisplayName="Tyche" Directory="Tyche1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+		<Entry Order="0" GameID="2678" DisplayName="Tyche" Directory="Tyche1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2679" DisplayName="Voodoo" Directory="Voodoo1600" PaytableName="BonusWheelWildMults" AllowedPercentages="90,92,94,96,98" Percentage="96" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2680" DisplayName="Mayan Royale" Directory="MayanRoyale1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2680" DisplayName="Mayan Royale" Directory="MayanRoyale1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2680" DisplayName="Mayan Royale" Directory="MayanRoyale1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+        <Entry Order="0" GameID="2681" DisplayName="Storm By The Nile" Directory="StormByTheNile1600" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+        <Entry Order="0" GameID="2681" DisplayName="Storm By The Nile" Directory="StormByTheNile1600" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+        <Entry Order="0" GameID="2681" DisplayName="Storm By The Nile" Directory="StormByTheNile1600" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+		<!-- Fireshot Ultra -->
+		<Entry Order="0" GameID="2687" DisplayName="Wicked Ways Ultra" Directory="WickedWaysDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+        <Entry Order="0" GameID="2688" DisplayName="Inferno Tiger Ultra" Directory="InfernoTigerDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2689" DisplayName="Blazing Wolf Ultra" Directory="BlazingWolfDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+        <Entry Order="0" GameID="2690" DisplayName="Toro De Fuego Ultra" Directory="ToroDeFuegoDX_Vertical" PaytableName="MoneyBallBonusDX" AllowedPercentages="92,93,94,95,96" Percentage="94" Denoms="1,2,5,10,25" Progressives="MBall-01,MBall-02,MBall-03,MBall-04" VariantName=""></Entry>
+		<!-- Legends of Myth -->
+		<Entry Order="0" GameID="2693" DisplayName="Wukong" Directory="Wukong_Vertical" PaytableName="LegendsOfMyth" AllowedPercentages="92,95" Percentage="92" Denoms="1,2,5,10,25" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2693" DisplayName="Wukong" Directory="Wukong_Vertical" PaytableName="LegendsOfMythLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2694" DisplayName="Imperial Guardian" Directory="ImperialGuardian_Vertical" PaytableName="LegendsOfMyth" AllowedPercentages="92,95" Percentage="92" Denoms="1,2,5,10,25" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2694" DisplayName="Imperial Guardian" Directory="ImperialGuardian_Vertical" PaytableName="LegendsOfMythLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2695" DisplayName="Cyan Dragon" Directory="CyanDragon_Vertical" PaytableName="LegendsOfMyth" AllowedPercentages="92,95" Percentage="92" Denoms="1,2,5,10,25" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2695" DisplayName="Cyan Dragon" Directory="CyanDragon_Vertical" PaytableName="LegendsOfMythLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="LoM-01,LoM-02,LoM-03,LoM-04" VariantName=""></Entry>
+		<!-- Yomi No Oni -->
+		<Entry Order="0" GameID="2696" DisplayName="Yomi No Oni" Directory="Oni_Vertical" PaytableName="25LineMD" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10" Progressives="MD-01" VariantName=""></Entry>
+		<Entry Order="0" GameID="2696" DisplayName="Yomi No Oni" Directory="Oni_Vertical" PaytableName="25LineMDLowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD-01" VariantName="LowVol"></Entry>
+		<!-- Rainbow Rush -->
+		<Entry Order="0" GameID="2697" DisplayName="Rainbow Rush" Directory="RainbowRush_Vertical" PaytableName="1024WaysDX" AllowedPercentages="92,94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2698" DisplayName="Dynamite Duke" Directory="DynamiteDuke_Vertical" PaytableName="1024WaysDX" AllowedPercentages="92,94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+		<Entry Order="0" GameID="2699" DisplayName="Big Ass Stampede DX" Directory="BigAssStampedeDX_Vertical" PaytableName="1024WaysDX" AllowedPercentages="92,94,95" Percentage="94" Denoms="1,2,5,10,25" Progressives="BAS-01,BAS-02,BAS-03,BAS-04" VariantName=""></Entry>
+		<!-- Fortune Festival -->
+		<Entry Order="0" GameID="2700" DisplayName="Xin Nian" Directory="XinNian_Vertical" PaytableName="PickVolatility" Percentage="94" AllowedPercentages="92,94,95" Denoms="1,2,5,10,25" Progressives="PickVol-01,PickVol-02,PickVol-03,PickVol-04"></Entry>
+        <Entry Order="0" GameID="2701" DisplayName="Duan Wu" Directory="DuanWu_Vertical" PaytableName="PickVolatility" Percentage="94" AllowedPercentages="92,94,95" Denoms="1,2,5,10,25" Progressives="PickVol-01,PickVol-02,PickVol-03,PickVol-04"></Entry>
+        <Entry Order="0" GameID="2702" DisplayName="Zhong Qiu" Directory="ZhongQiu_Vertical" PaytableName="PickVolatility" Percentage="94" AllowedPercentages="92,94,95" Denoms="1,2,5,10,25" Progressives="PickVol-01,PickVol-02,PickVol-03,PickVol-04"></Entry>
+        <!-- MD3 -->
+        <Entry Order="0" GameID="2703" DisplayName="Hot Royale" Directory="HotRoyale_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02" VariantName=""></Entry>
+        <Entry Order="0" GameID="2703" DisplayName="Hot Royale" Directory="HotRoyale_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+        <Entry Order="0" GameID="2704" DisplayName="Thunderbird" Directory="Thunderbird_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02" VariantName=""></Entry>
+        <Entry Order="0" GameID="2704" DisplayName="Thunderbird" Directory="Thunderbird_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+		<Entry Order="0" GameID="2705" DisplayName="Big Buckin' Bronco" Directory="BigBuckinBronco_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02" VariantName=""></Entry>
+		<Entry Order="0" GameID="2705" DisplayName="Big Buckin' Bronco" Directory="BigBuckinBronco_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+		<!--
+        <Entry Order="0" GameID="2707" DisplayName="Wild Rampage" Directory="WildRampage_Vertical" PaytableName="25LineMD3" AllowedPercentages="92,95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02" VariantName=""></Entry>
+		<Entry Order="0" GameID="2707" DisplayName="Wild Rampage" Directory="WildRampage_Vertical" PaytableName="25LineMD3LowVol" AllowedPercentages="94" Percentage="94" Denoms="1,2" Progressives="MD3-01,MD3-02" VariantName="LowVol"></Entry>
+        -->
+		<!--
+        <Entry Order="0" GameID="2708" DisplayName="MD5" Directory="MD5_Vertical" PaytableName="25LineMD3" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="MD3-01,MD3-02"></Entry>
+		-->
+        <!-- Devil's ReDeux -->
+		<Entry Order="0" GameID="2706" DisplayName="Devil's Re-Deux" Directory="DevilsReDeux_Vertical" PaytableName="20Line" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName=""></Entry>
+		<Entry Order="0" GameID="2706" DisplayName="Devil's Re-Deux" Directory="DevilsReDeux_Vertical" PaytableName="20LineM" AllowedPercentages="90,92,94,96,98" Percentage="94" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="M"></Entry>
+		<Entry Order="0" GameID="2706" DisplayName="Devil's Re-Deux" Directory="DevilsReDeux_Vertical" PaytableName="20LineMSS" AllowedPercentages="95" Percentage="95" Denoms="1,2,5,10,25" Progressives="V5R25L-001" VariantName="MSS"></Entry>
+		<!-- Legends Unlocked -->
+		<!--
+        <Entry Order="0" GameID="2709" DisplayName="Medusa" Directory="Medusa_Vertical" PaytableName="LockAndKey" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="LockAndKey-01,LockAndKey-02,LockAndKey-03,LockAndKey-04"></Entry>
+		<Entry Order="0" GameID="2710" DisplayName="Hades" Directory="Hades_Vertical" PaytableName="LockAndKey" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="LockAndKey-01,LockAndKey-02,LockAndKey-03,LockAndKey-04"></Entry>
+		<Entry Order="0" GameID="2711" DisplayName="Artemis" Directory="Artemis_Vertical" PaytableName="LockAndKey" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="LockAndKey-01,LockAndKey-02,LockAndKey-03,LockAndKey-04"></Entry>
+		-->
+		<!-- Ruby Rush -->
+		<!--
+		<Entry Order="0" GameID="2712" DisplayName="Aztlan" Directory="Aztlan_Vertical" PaytableName="40Line" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="40Line-01"></Entry>
+		<Entry Order="0" GameID="2713" DisplayName="Tundra" Directory="Tundra_Vertical" PaytableName="40Line" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="40Line-01"></Entry>
+		<Entry Order="0" GameID="2714" DisplayName="Kahakai" Directory="Kahakai_Vertical" PaytableName="40Line" Percentage="95" AllowedPercentages="94,95" Denoms="1,2,5,10,25" Progressives="40Line-01"></Entry>
+		-->
+	</GamingJurisdiction>
+</Games>

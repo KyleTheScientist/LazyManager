@@ -1,0 +1,339 @@
+#:kivy 2.3.1
+
+<PropertyLabel>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: self.minimum_height
+    spacing: 20
+    Label:
+        size_hint_y: None
+        height: self.texture_size[1]
+        id: title
+        text: root.title
+        font_size: 24
+    Label:
+        size_hint_y: None
+        height: self.texture_size[1]
+        text_size: (self.width, None)
+        halign: "center"
+        id: value
+        text: root.value
+        color: root.color
+        font_size: 18
+
+<DButton>:
+    background_normal: ''
+    background_down: ''
+    background_color: (0, 0, 0, 0)
+    size_hint_y: None
+    font_size: 20
+    canvas.before:
+        Color:
+            rgba: (.11/2, .09/2, .13/2, 1) if self.state == "down" else (0, 0, 0, 0)
+        RoundedRectangle:
+            radius: [10,]
+            size: self.size
+            pos: self.pos
+        Color:
+            rgba: .2, .18, .22, 1
+        Line:
+            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+            width: 1
+            cap: 'round'
+            joint: 'round'
+
+<SButton>:
+    background_normal: ''
+    background_down: ''
+    background_color: (0, 0, 0, 0)
+    size_hint_y: None
+    font_size: 24
+    color: (1, 1, 1, 1)
+    on_press: 
+        app.site_properties.update_properties(root.parent)
+        app.screen_manager.transition.direction = 'left'
+        app.screen_manager.current = "site_properties"
+
+<Device>:
+    size_hint_y: None
+    height: 75
+    padding: 10
+    text: root.label
+    color: (26 / 255, 112 / 255, 52 / 255, 1) if root.status == "Online" else (158 / 255, 44 / 255, 56 / 255, 1)
+    on_press: 
+        app.device_properties.update_properties(root)
+        app.screen_manager.transition.direction = 'left'
+        app.screen_manager.current = "device_properties"
+       
+<Site>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: self.minimum_height
+    spacing: 30
+    padding: 30
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, .75
+        Line:
+            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+            width: 1
+            cap: 'round'
+            joint: 'round'
+    
+    SButton: 
+        text: f"{root.name} ({root.count})"
+        font_size: 24
+        color: (1, 1, 1, 1)
+
+    BoxLayout:
+        size_hint_y: None
+        height: self.minimum_height
+        orientation: 'vertical'
+        spacing: 10
+        id: container
+
+<DeviceList>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 25
+        spacing: 25
+
+        BoxLayout: # Top bar (header + back button)
+            size_hint_y: None
+            height: 50
+            orientation: 'horizontal'
+            Label:
+                text: "Devices"
+                font_size: 48
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+
+            BoxLayout:
+                id: container
+                orientation: 'vertical'
+                spacing: 30
+                padding: 25
+                size_hint_y: None
+                height: self.minimum_height  # This is crucial for vertical scrolling
+
+<DeviceProperties>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 25
+
+        BoxLayout: # Top bar (header + back button)
+            size_hint_y: None
+            height: 100
+            orientation: 'horizontal'
+            
+            DButton:
+                text: "<"
+                size_hint: None, None  # Disable size hinting for absolute sizing
+                size: 100, 100         # Set a specific size
+                on_press:
+                    app.screen_manager.transition.direction = 'right'
+                    app.screen_manager.current = 'devices'
+            
+            Label:
+                text: root.device.label if root.device else "-"
+                size_hint_x: None
+                width: max(self.parent.width - 200, 0)
+                height: 100
+                font_size: 48
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            
+            BoxLayout:
+                padding: 25
+                spacing: 100
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height  # This is crucial for vertical scrolling
+                
+                BoxLayout: # Device properties box
+                    padding: 25
+                    size_hint_y: None
+                    height: self.minimum_height
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, .75
+                        Line:
+                            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+                            width: 1
+                            cap: 'round'
+                            joint: 'round'
+                    spacing: 20
+                    PropertyLabel:
+                        title: f'Status'
+                        value: f'{root.device.status if root.device else "-"}'
+                        color: (0, 1, 0, 1) if root.device and root.device.status == "Online" else (1, 0, 0, 1)
+                    PropertyLabel:
+                        title: f'IP'
+                        value: f'{root.device.ip if root.device else "-"}'
+                    PropertyLabel:
+                        title: f'Site'
+                        value: f'{root.device.site if root.device else "-"}'
+                    PropertyLabel:
+                        title: f'BV Type'
+                        value: f'{root.device.bv_type if root.device else "-"}'
+
+                
+                DButton:
+                    text: 'Ping'
+                    color: (1, 1, 1, 1)
+                    on_press: root.ping()
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+                    DButton:
+                        text: '■ Automakro'
+                        color: (158 / 255, 44 / 255, 56 / 255, 1)
+                        on_press: root.stop_automakro()
+                    DButton:
+                        text: '▶ Automakro'
+                        color: (26 / 255, 112 / 255, 52 / 255, 1)
+                        on_press: root.start_automakro()
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+                    DButton:
+                        text: '■ EGM Controller'
+                        color: (158 / 255, 44 / 255, 56 / 255, 1)
+                        on_press: root.stop_egm_controller()
+
+                    DButton:
+                        text: '▶ EGM Controller'
+                        color: (26 / 255, 112 / 255, 52 / 255, 1)
+                        on_press: root.start_egm_controller()
+
+                DButton:
+                    text: 'Clear RAM'
+                    on_press: root.clear_ram()
+                    color: (158 / 255, 44 / 255, 56 / 255, 1)
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+                    DButton:
+                        text: 'F1'
+                        color: (158 / 255, 44 / 255, 56 / 255, 1)
+                        on_press: root.f1()
+
+                    DButton:
+                        text: 'F2'
+                        color: (26 / 255, 112 / 255, 52 / 255, 1)
+                        on_press: root.f2()
+
+<SiteProperties>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 25
+
+        BoxLayout:
+            size_hint_y: None
+            height: 100
+            orientation: 'horizontal'
+            
+            DButton:
+                text: "<"
+                size_hint: None, None  # Disable size hinting for absolute sizing
+                size: 100, 100         # Set a specific size
+                on_press:
+                    app.screen_manager.transition.direction = 'right'
+                    app.screen_manager.current = 'devices'
+            
+            Label:
+                text: root.site.name if root.site else "-"
+                size_hint_x: None
+                width: max(self.parent.width - 200, 0)
+                height: 100
+                font_size: 48
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            
+            BoxLayout:
+                padding: 25
+                spacing: 100
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height + 50  # This is crucial for vertical scrolling
+
+                BoxLayout: # Site properties box
+                    padding: 25
+                    size_hint_y: None
+                    height: self.minimum_height
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, .75
+                        Line:
+                            rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
+                            width: 1
+                            cap: 'round'
+                            joint: 'round'
+
+                    PropertyLabel:
+                        title: f'Devices ({root.site.count if root.site else ""})'
+                        value: f'{root.site.device_list if root.site else "-"}'
+                
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+                    DButton:
+                        text: '■ Automakro'
+                        color: (158 / 255, 44 / 255, 56 / 255, 1)
+                        on_press: root.stop_automakro()
+                    DButton:
+                        text: '▶ Automakro'
+                        color: (26 / 255, 112 / 255, 52 / 255, 1)
+                        on_press: root.start_automakro()
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+                    DButton:
+                        text: '■ EGM Controller'
+                        color: (158 / 255, 44 / 255, 56 / 255, 1)
+                        on_press: root.stop_egm_controller()
+
+                    DButton:
+                        text: '▶ EGM Controller'
+                        color: (26 / 255, 112 / 255, 52 / 255, 1)
+                        on_press: root.start_egm_controller()
+
+                DButton:
+                    text: 'Clear RAM'
+                    on_press: root.clear_ram()
+                    color: (158 / 255, 44 / 255, 56 / 255, 1)
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 50
+                    spacing: 10
+                    DButton:
+                        text: 'F1'
+                        color: (158 / 255, 44 / 255, 56 / 255, 1)
+                        on_press: root.f1()
+
+                    DButton:
+                        text: 'F2'
+                        color: (26 / 255, 112 / 255, 52 / 255, 1)
+                        on_press: root.f2()

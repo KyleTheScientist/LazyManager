@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GameSet Name="Regression - 1" Locked="false" CasinoName="Test" GamingJurisdiction="ClassII" MaxGameTitles="9" LastModification="10/10/2025 2:02:47 PM" DefaultGameID="2648">
+  <Title ThemeID="2648" Payout="94" PaytableName="MultiSpinBonusWheel" />
+  <Title ThemeID="2649" Payout="94" PaytableName="BonusWheelWildMults" />
+  <Title ThemeID="2650" Payout="94" PaytableName="LockingStackedWildsSS" />
+  <Title ThemeID="2655" Payout="94" PaytableName="20LineTSPS" />
+  <Title ThemeID="2656" Payout="94" PaytableName="20LineTS" />
+  <Title ThemeID="2657" Payout="94" PaytableName="20Line" />
+  <Title ThemeID="2658" Payout="94" PaytableName="20LineM" />
+  <Title ThemeID="2664" Payout="94" PaytableName="25Line" />
+  <Title ThemeID="2696" Payout="95" PaytableName="25LineMD" />
+</GameSet>

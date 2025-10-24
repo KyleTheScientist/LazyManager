@@ -14,10 +14,10 @@ logger = get_logger("LazyManager")
 AGENT_PORT = 8765
 APP_PORT = 8767
 
-# AGENT_IPS = [f"10.0.0.{i}" for i in range(2, 28)]
-# AGENT_IPS.remove("10.0.0.3")  # Exclude POS terminal
+AGENT_IPS = [f"10.0.0.{i}" for i in range(2, 28)]
+AGENT_IPS.remove("10.0.0.3")  # Exclude POS terminal
 
-AGENT_IPS = ["127.0.0.1"]  # For testing purposes
+# AGENT_IPS = ["127.0.0.1"] # For testing purposes
 
 
 class LazyManager(ConnectionManager):

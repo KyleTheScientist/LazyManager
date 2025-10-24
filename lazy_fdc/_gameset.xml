@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GameSet Name="Regression - 2" Locked="false" CasinoName="Test" GamingJurisdiction="ClassII" MaxGameTitles="9" LastModification="10/10/2025 10:24:29 AM" DefaultGameID="2696">
+  <Title ThemeID="2687" Payout="94" PaytableName="MoneyBallBonusDX" />
+  <Title ThemeID="2693" Payout="94" PaytableName="LegendsOfMythLowVol" />
+  <Title ThemeID="2694" Payout="95" PaytableName="LegendsOfMyth" />
+  <Title ThemeID="2696" Payout="94" PaytableName="25LineMDLowVol" />
+  <Title ThemeID="2697" Payout="94" PaytableName="1024WaysDX" />
+  <Title ThemeID="2700" Payout="94" PaytableName="PickVolatility" />
+  <Title ThemeID="2703" Payout="95" PaytableName="25LineMD3" />
+  <Title ThemeID="2704" Payout="94" PaytableName="25LineMD3LowVol" />
+</GameSet>
