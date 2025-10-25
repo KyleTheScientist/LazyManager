@@ -49,7 +49,7 @@ class Mailman:
             s.close()
         return my_ip
 
-    def get_payload(self, outcome: Outcome, site_id: int, client_ip: str, type_: Type = Type.BINGO):
+    def get_payload(self, outcome: Outcome, site_id: int, target_ip: str, type_: Type = Type.BINGO):
         payload = {
             "overwatchMT": type_,
             "identity": {
@@ -61,19 +61,21 @@ class Mailman:
                 "sessionToken": "",
             },
             "pattern": {"pattern": outcome.pattern, "matchIn": outcome.match_in},
-            # "machine": {
-            #     "siteID": site_id,
-            #     "clientIP": "10.2.0.2",
-            #     "machineType": MachineType.EGM,
-            # },
         }
+
+        if target_ip:
+            payload['machine'] = {
+                "siteID": site_id,
+                "clientIP": target_ip,
+                "machineType": MachineType.EGM,
+            }
         return json.dumps(payload).encode("utf-8")
 
-    def force_outcomes(self, outcomes: list[Outcome], site_id: int, client_ip: str):
+    def force_outcomes(self, outcomes: list[Outcome], site_id: int, target_ip: str):
         if not outcomes:
             return
         
-        client = LazyClient("10.1.1.254", 25557, reconnect=False)
+        client = LazyClient(self.host, self.port, reconnect=False)
         client.start()
         sleep(1)
         
@@ -86,7 +88,7 @@ class Mailman:
             message = client.queue.get()
             if "connected" in message:
                 for outcome in outcomes:
-                    payload = self.get_payload(outcome, site_id, client_ip)
+                    payload = self.get_payload(outcome, site_id, target_ip)
                     client.send(payload)
 
             if "error" in message:

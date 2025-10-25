@@ -10,14 +10,15 @@ from connection import Mailman, Outcome
 
 
 def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
+    """Get absolute path to resource, works for dev and for PyInstaller"""
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = Path(sys._MEIPASS)
     except Exception:
         base_path = Path(__file__).parent
-    
+
     return base_path / relative_path
+
 
 # Load all bingo entries into in-memory database
 files = resource_path("bingo/").glob("**/*.json")
@@ -202,28 +203,34 @@ def queue_pattern():
         dpg.add_text(dpg.get_value("match_in"))
         dpg.add_text(pattern)
 
+
 def popup(text):
     if dpg.does_item_exist("result_window"):
         dpg.delete_item("result_window")
-    
+
     with dpg.window(tag="result_window", label="Result", width=400, height=100, modal=True) as popup:
         vw, vh = dpg.get_viewport_width(), dpg.get_viewport_height()
         w, h = vw * 0.5, 100
         dpg.set_item_width(popup, w)
         dpg.set_item_pos(popup, [(vw - w) // 2, (vh - h) // 2])
-        
+
         dpg.add_text(text)
         dpg.add_spacer(height=5)
         dpg.add_button(label="Close", width=-1, callback=lambda: dpg.delete_item("result_window"))
+
 
 def force_queued_patterns():
     if not dpg.get_item_children("queue_table", 1):
         popup("No patterns queued")
         return
 
-    mailman = Mailman("10.1.1.254", 25557)
-    site_id = ""
-    client_ip = ""
+    address = dpg.get_value("neoserver_ip").split(":")
+    if len(address) != 2:
+        popup("Invalid NeoServer endpoint. Must be in format X.X.X.X:PORT")
+        return
+    mailman = Mailman(address[0], int(address[1]))
+    site_id = dpg.get_value("site_id")
+    client_ip = dpg.get_value("egm_ip")
     outcomes = []
     for row in dpg.get_item_children("queue_table", 1):
         children = dpg.get_item_children(row, 1)
@@ -238,12 +245,13 @@ def force_queued_patterns():
     success = mailman.force_outcomes(outcomes, site_id, client_ip)
 
     dpg.configure_item("force_outcomes_button", enabled=True)
-    dpg.configure_item("force_outcomes_button", label="Force outcomes")    
+    dpg.configure_item("force_outcomes_button", label="Force outcomes")
 
     if success:
         popup("Successfully forced all outcomes")
     else:
         popup("Failed to force outcomes.\nSee console for details.")
+
 
 def main():
     dpg.create_context()
@@ -252,6 +260,21 @@ def main():
     paytables = []
 
     with dpg.window(label="Outcome Forcer", width=-1, height=-1, tag="root") as root:
+        # Connection settings
+        with dpg.child_window(label="Connection Settings", width=-1, height=62, horizontal_scrollbar=True):
+            with dpg.table(header_row=False, width=-1):
+                dpg.add_table_column()
+                dpg.add_table_column()
+                dpg.add_table_column()
+                with dpg.table_row():
+                    dpg.add_text("NeoServer Endpoint")
+                    dpg.add_text("Site ID")
+                    dpg.add_text("EGM IP")
+                with dpg.table_row():
+                    dpg.add_input_text(default_value="10.1.1.254:25557", tag="neoserver_ip", width=-1)
+                    dpg.add_input_text(default_value="", tag="site_id", width=-1)
+                    dpg.add_input_text(default_value="", tag="egm_ip", width=-1)
+
         with dpg.group(width=-1):
             # Filters
             with dpg.child_window(label="Filters", width=-1, height=130, horizontal_scrollbar=True):
@@ -265,7 +288,7 @@ def main():
                 dpg.add_combo(label="Bet Level", items=[], width=300, tag="bet_level_combo", callback=filter_changed)
 
             # Pattern table container
-            with dpg.child_window(label="Entries", tag="entry_window", width=-1, height=385, horizontal_scrollbar=True):
+            with dpg.child_window(label="Entries", tag="entry_window", width=-1, height=322, horizontal_scrollbar=True):
                 dpg.add_table(tag="entry_table")
 
         with dpg.group():
@@ -297,7 +320,12 @@ def main():
                             dpg.add_table_column(label="Match In")
                             dpg.add_table_column(label="Pattern")
                     with dpg.child_window(label="Send", width=-1, height=35):
-                        dpg.add_button(label="Force outcomes", tag="force_outcomes_button", width=-1, callback=lambda: force_queued_patterns())
+                        dpg.add_button(
+                            label="Force outcomes",
+                            tag="force_outcomes_button",
+                            width=-1,
+                            callback=lambda: force_queued_patterns(),
+                        )
 
     dpg.set_primary_window(root, True)
 
