@@ -89,6 +89,7 @@ class Mailman:
             if "connected" in message:
                 for outcome in outcomes:
                     payload = self.get_payload(outcome, site_id, target_ip)
+                    print(f"Sending: {payload}")
                     client.send(payload)
 
             if "error" in message:

@@ -27,19 +27,24 @@ for file in files:
     properties = json.load(file.open("r"))
     db.insert(properties)
 
+selected_row = None
+
 
 def pattern_changed(sender, app_data, user_data):
-    for table_row in dpg.get_item_children("entry_table", 1):
-        for selectable in dpg.get_item_children(table_row, 1):
-            dpg.set_value(selectable, False)
+    global selected_row
+    if selected_row is not None:
+        dpg.set_value(selected_row, False)
+    selected_row = None
 
 
 def selected_entry_callback(sender, app_data, user_data):
-    entry, row = user_data
-    for table_row in dpg.get_item_children("entry_table", 1):
-        for selectable in dpg.get_item_children(table_row, 1):
-            dpg.set_value(selectable, dpg.get_item_alias(table_row) == f"row_{row}")
+    global selected_row
 
+    if selected_row is not None:
+        dpg.set_value(selected_row, False)
+    selected_row = sender
+
+    entry, row = user_data
     pattern = entry.get("pattern", [])
     for i in range(25):
         bit = (pattern >> i) & 1
@@ -52,12 +57,10 @@ def selected_entry_callback(sender, app_data, user_data):
 
 def sort_table(sender, sort_specs):
     col, direction = sort_specs[0]
-    print(dpg.get_item_alias(col), direction)
-
     rows = dpg.get_item_children("entry_table", 1)
 
     def sort_key(row):
-        entry = dpg.get_item_user_data(row)
+        table, entry = dpg.get_item_user_data(row)
         value = entry.get(dpg.get_item_alias(col).split("_", 1)[1], "")
         value = str(value)
         return len(value) * 10 + (int(value) if value.isdecimal() else 0)
@@ -104,7 +107,7 @@ def build_entry_table(bingo_tables):
                     )
 
             for entry in entries:
-                with dpg.table_row(tag=f"row_{row}", user_data=entry):
+                with dpg.table_row(tag=f"row_{row}", user_data=(table, entry)):
                     for col in columns:
                         value = entry.get(col, "")
                         dpg.add_selectable(
@@ -121,20 +124,15 @@ def build_entry_table(bingo_tables):
 
 
 def reset_downstream(sender):
-    return
     combos = ["paytable_combo", "percentage_combo", "table_name_combo", "denom_combo", "bet_level_combo"]
     index = combos.index(sender)
     print(f"Resetting downstream combos after {sender}")
-    for tag in combos[index + 1 :]:
+    for tag in combos[index:]:
         print(f" - Resetting {tag}")
-        dpg.configure_item(tag, items=[])
         dpg.set_value(tag, "")
 
 
 def filter_changed(sender, app_data, user_data):
-    print(sender)
-    reset_downstream(sender)
-
     condition = Query()
 
     # Filter by paytable
@@ -143,6 +141,8 @@ def filter_changed(sender, app_data, user_data):
     table_name = dpg.get_value("table_name_combo")
     percentages = sorted(set(str(item["configuration"]["percentage"]) for item in db.search(condition)))
     dpg.configure_item("percentage_combo", items=percentages)
+    if dpg.get_value("percentage_combo") not in percentages:
+        reset_downstream("percentage_combo")
 
     # Filter by percentage
     percentage = dpg.get_value("percentage_combo")
@@ -150,6 +150,8 @@ def filter_changed(sender, app_data, user_data):
         condition = condition & (Query().configuration.percentage == int(percentage))
         table_names = sorted(set(item["configuration"]["tableName"] for item in db.search(condition)))
         dpg.configure_item("table_name_combo", items=table_names)
+        if dpg.get_value("table_name_combo") not in table_names:
+            reset_downstream("table_name_combo")
 
     # Filter by table name
     table_name = dpg.get_value("table_name_combo")
@@ -163,7 +165,9 @@ def filter_changed(sender, app_data, user_data):
     for doc in docs:
         denoms.update(doc["configuration"]["betLevelGroups"])
     denoms = sorted(list(int(denom) for denom in denoms))
-    dpg.configure_item("denom_combo", items=list(denoms))
+    dpg.configure_item("denom_combo", items=denoms)
+    if dpg.get_value("denom_combo") not in [str(d) for d in denoms]:
+        reset_downstream("denom_combo")
 
     # Filter by bet level
     denom = dpg.get_value("denom_combo")
@@ -173,7 +177,9 @@ def filter_changed(sender, app_data, user_data):
             if denom in doc["configuration"]["betLevelGroups"]:
                 bet_levels.update(doc["configuration"]["betLevelGroups"][denom])
         bet_levels = sorted(list(int(level) for level in bet_levels))
-        dpg.configure_item("bet_level_combo", items=list(bet_levels))
+        dpg.configure_item("bet_level_combo", items=bet_levels)
+        if dpg.get_value("bet_level_combo") not in [str(b) for b in bet_levels]:
+            reset_downstream("bet_level_combo")
 
     filtered_docs = []
     for doc in docs:
@@ -192,16 +198,59 @@ def filter_changed(sender, app_data, user_data):
 
 def queue_pattern():
     pattern = 0
+    print
     for y in range(5):
         for x in range(5):
             if dpg.get_value(f"pattern_{y}_{x}"):
                 pattern |= 1 << (y * 5 + x)
 
+    if not dpg.does_alias_exist(f"pattern_texture_{pattern}"):
+        scale = 4
+        texture_data = [0.0, 0.0, 0.0, 1.0] * (25 * scale * scale)
+        for y in range(5):
+            for x in range(5):
+                if dpg.get_value(f"pattern_{y}_{x}"):
+                    for sy in range(scale):
+                        for sx in range(scale):
+                            index = ((y * scale + sy) * (5 * scale) + (x * scale + sx)) * 4
+                            texture_data[index : index + 4] = [1.0, 1.0, 1.0, 1.0]
+
+        with dpg.texture_registry():
+            dpg.add_static_texture(
+                width=5 * scale, height=5 * scale, default_value=texture_data, tag=f"pattern_texture_{pattern}"
+            )
+
+    # Find selected entry in entry table
+    row, table, entry = None, None, None
+    for table_row in dpg.get_item_children("entry_table", 1):
+        for selectable in dpg.get_item_children(table_row, 1):
+            if dpg.get_value(selectable):
+                row = table_row
+                break
+        if row is not None:
+            break
+
+    if row is not None:
+        table, entry = dpg.get_item_user_data(row)
+        pattern = entry.get("pattern", 0)
+
     dpg.push_container_stack("queue_table")
     with dpg.table_row():
         dpg.add_button(label="X", width=20, callback=lambda s, a, u: dpg.delete_item(dpg.get_item_parent(s)))
-        dpg.add_text(dpg.get_value("match_in"))
+        dpg.add_image(f"pattern_texture_{pattern}", width=20, height=20)
         dpg.add_text(pattern)
+        dpg.add_text(dpg.get_value("match_in"))
+        outcomes = ""
+        if table and entry:
+            table = table["configuration"]["tableName"]
+            dpg.add_text(table)
+            outcomes = dict(entry)
+            del outcomes["pattern"]
+            del outcomes["matchIn"]
+            outcomes = ", ".join(f"{k}={v}" for k, v in outcomes.items())
+            dpg.add_text(outcomes)
+        else:
+            pass
 
 
 def popup(text):
@@ -234,8 +283,8 @@ def force_queued_patterns():
     outcomes = []
     for row in dpg.get_item_children("queue_table", 1):
         children = dpg.get_item_children(row, 1)
-        match_in = int(dpg.get_value(children[1]))
         pattern = int(dpg.get_value(children[2]))
+        match_in = int(dpg.get_value(children[3]))
         outcome = Outcome(pattern=pattern, match_in=match_in)
         outcomes.append(outcome)
 
@@ -294,7 +343,7 @@ def main():
         with dpg.group():
             with dpg.group(horizontal=True):
                 with dpg.child_window(label="Pattern Display", width=143, height=219):
-                    dpg.add_input_int(label="Match in", tag="match_in", step=0, width=65)
+                    dpg.add_input_int(label="Match-in", tag="match_in", step=0, width=65)
                     dpg.add_spacer(height=5)
                     for y in range(5):
                         with dpg.group(horizontal=True):
@@ -317,8 +366,11 @@ def main():
                             scrollY=True,
                         ):
                             dpg.add_table_column(label="")
-                            dpg.add_table_column(label="Match In")
+                            dpg.add_table_column(label="")
                             dpg.add_table_column(label="Pattern")
+                            dpg.add_table_column(label="Match-in")
+                            dpg.add_table_column(label="Table")
+                            dpg.add_table_column(label="Outcomes")
                     with dpg.child_window(label="Send", width=-1, height=35):
                         dpg.add_button(
                             label="Force outcomes",
